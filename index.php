@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./res/css/styles.css">
 </head>
 <body>
-    
+    <?php 
+    echo "test";
+    ?>
 </body>
 </html>
