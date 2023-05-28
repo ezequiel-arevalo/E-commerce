@@ -19,16 +19,16 @@
 </head>
 <body>
     <!--Inicio de Header-->
-    <header>
-        <div id="Header-Logo">
+    <header id="Header">
+        <div id="Header-content">
             <h1>MyShop</h1>
         </div>
     </header>
     <!--Fin de Header-->
 
     <!--Inicio de Nav-->
-    <nav>
-        <ul>
+    <nav id="Nav">
+        <ul id="Nav-content">
             <li><a href="index.php" class="list-item-link">Home</a></li>
             <li><a href="index.php" class="list-item-link">Productos</a></li>
             <li><a href="index.php" class="list-item-link">Contacto</a></li>
@@ -38,15 +38,14 @@
     
     <!--Inicio del Main-->
     <main>
-        <?php 
-            echo "vistas";
-        ?>
     </main>
     <!--Fin del Main-->
 
     <!--Inicio del Footer-->
     <footer id="Footer">
-        <p>Repositorio del proyecto <a href="https://github.com/Ezearevalodev/E-commerce" target="_blank">@Ezearevalodev</a></p>
+        <div id="Footer-content">
+            <p>Repositorio del proyecto <a href="https://github.com/Ezearevalodev/E-commerce" target="_blank">@Ezearevalodev</a></p>
+        </div>
     </footer>
     <!--Fin del Footer-->
 </body>

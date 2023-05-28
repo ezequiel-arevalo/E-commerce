@@ -3,3 +3,82 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
+/*INICIO HEADER*/
+#Header{
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    margin: 0px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+#Header-content{
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 10px;
+}
+
+#Header-content > h1{
+    color: gold;
+    font-size: 3rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*FIN HEADER*/
+
+/*INICIO NAV*/
+#Nav{
+    width: 100%;
+    height: 80px auto;
+    background-color: black;
+}
+
+#Nav-content{
+    max-width: 1200px;
+    height: inherit;
+    margin: 0 auto;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#Nav-content > li {
+    border: 2px solid transparent;
+}
+
+#Nav-content > li:hover{
+    background-color: rgba(218, 165, 32, 0.4);
+    border-top: 2px double gold;
+    transition: all 1s ease;
+}
+
+#Nav-content > li > a{
+    display: block;
+    padding: 20px 60px;
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1.2px;
+}
+
+@media screen and (max-width: 450px) {
+    #Nav-content{
+        flex-direction: column;
+        background-color: yellowgreen;
+    }
+}
+/*FIN NAV*/
