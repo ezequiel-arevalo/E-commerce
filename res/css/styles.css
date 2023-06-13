@@ -1,84 +1,749 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-/*INICIO HEADER*/
-#Header{
-    width: 100%;
-    height: 120px;
-    background-color: black;
-    margin: 0px auto;
+a {
+  text-decoration: none;
+}
 
+/*HEADER Y FOOTER*/
+header,
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #131313;
+}
+
+/*LOGO DEL SITIO*/
+#Header-Logo {
+  text-align: center;
+  line-height: 100px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  color: #e7bd70;
+}
+
+/*MENÚ DE NAVEGACIÓN*/
+
+nav {
+  min-width: 200px;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+  background-color: #131313;
+}
+
+nav ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+nav ul li {
+  width: 200px;
+  margin: 0px 20px;
+  list-style-type: none;
+  text-align: center;
+}
+
+.list-item-link {
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.list-item-link:hover {
+  color: #e7bd70;
+}
+
+/*MAIN*/
+main {
+  width: 100%;
+  min-height: 74.1vh;
+}
+
+/*VISTA TITLE - SUBTITLE*/
+.Vista-Title {
+  height: 60px;
+  padding: 30px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.Vista-Title h2 {
+  font-size: 1.8rem;
+}
+
+.Vista-Title h3 {
+  font-size: 1.5rem;
+}
+
+/*Footer*/
+#Footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#Footer > p {
+  font-family: "Josefin Sans", sans-serif;
+  color: #ffffff;
+  text-align: center;
+}
+
+#Footer > p > a {
+  font-size: 1rem;
+  color: #e7bd70;
+}
+
+/*
+VISTA DE HOME
+  Section-1
+  Section-2
+  Section-3
+  Section-4
+  Section-5
+*/
+
+#Section-1,
+#Section-2,
+#Section-3,
+#Section-4,
+#Section-5 {
+  width: 100%;
+  min-height: 120px;
+  margin: 0 auto;
+}
+
+#Section-1 {
+  background-color: #212121;
+}
+
+#Section-1-Container {
+  max-width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+#Section-1-Container > #Section-1-Content {
+  background-color: #212121;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#Section-1-Container > #Section-1-Content > h2 {
+  text-align: center;
+  font-size: 2.3rem;
+  color: #e6b980;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#Section-1-Content > #Section-1-text {
+  border-top: 2px solid #e7bd70;
+  padding-top: 10px;
+}
+
+#Section-1-Content > #Section-1-text > p {
+  font-size: 1.2rem;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+#Section-2 {
+  background-color: #191919;
+}
+
+#Section-2-Content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#Section-2-Content-Left {
+  width: 100%;
+  height: 100%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#Section-2-Content-Left > h2 {
+  font-size: 3rem;
+  color: #e7bd70;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+#Section-2-Content-Left > h2:hover {
+  text-decoration: underline;
+}
+
+#Section-2-Content-Left > p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: whitesmoke;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1.5;
+}
+
+#Section-2-Content-Right {
+  width: 100%;
+  height: 100%;
+}
+
+#Section-2-Content-Right > img {
+  max-width: 100%;
+  height: auto;
+}
+
+#Section-3 {
+  background-color: #212121;
+}
+
+#Section-3-Content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#Section-3-Content-Left {
+  width: 100%;
+  height: 100%;
+}
+
+#Section-3-Content-Left > img {
+  max-width: 100%;
+  height: auto;
+}
+
+#Section-3-Content-Right {
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#Section-3-Content-Right > h2 {
+  font-size: 3rem;
+  color: #e7bd70;
+  font-family: "Josefin Sans", sans-serif;
+  text-decoration: underline;
+}
+
+#Section-3-Content-Right > p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: whitesmoke;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1.5;
+}
+
+#Section-4 {
+  background-color: #191919;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#Section-4-Content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+#Section-4-header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 300px;
+  padding: 15px;
+}
+
+.Section-4-items {
+  width: 30%;
+  min-height: 200px;
+  padding: 10px;
+  box-shadow: 0px 0px 3px #e7bd70;
+  transition: all 500ms ease;
+  border-radius: 15px;
+}
+
+.Section-4-items:hover {
+  box-shadow: 0px 0px 15px #e7bd70, 0px -0px 4px #e6b980;
+  transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s,
+    transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.Section-4-item-header {
+  text-align: center;
+  padding: 5px;
+}
+
+.Section-4-item-header > img {
+  filter: invert(var(--value, 100%));
+}
+
+.Section-4-item-text {
+  padding: 20px;
+  color: white;
+}
+
+.Section-4-item-text h3 {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/*VISTA DE PRODUCTOS*/
+#Productos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  list-style-type: none;
+}
+
+/*PRODUCTOS CARD*/
+.Producto-card {
+  width: 430px;
+  min-height: 700px;
+  margin: 20px;
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+/*PRODUCTOS HEADER*/
+.Producto-header {
+  width: 100%;
+  height: 415px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Producto-Imagen {
+  width: inherit;
+  height: inherit;
+  text-align: center;
+}
+
+.Producto-Imagen img {
+  width: 150px;
+  height: 410px;
+}
+
+/*PRODUCTOS MAIN*/
+.Producto-main {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.Producto-title {
+  width: calc(100% - 10px);
+  height: 60px;
+  line-height: 60px;
+}
+
+.Producto-title h4 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.line {
+  width: 80%;
+  height: 2px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.Producto-text {
+  width: 80%;
+  margin: 20px auto;
+  min-height: 150px;
+}
+
+.Producto-text p {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+/*PRODUCTOS FOOTER*/
+.Producto-footer {
+  width: 100%;
+  height: 100px;
+  padding-bottom: 20px;
+
+  /*FLEXBOX*/
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Precio {
+  padding: 5px 15px;
+  font-size: 1.2em;
+  color: green;
+  font-weight: bold;
+}
+
+.Producto-btn {
+  border: 3px solid green;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: green;
+  font-size: 1.2em;
+  font-weight: 550;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  color: rgb(236, 236, 236);
+}
+
+.Producto-btn:hover {
+  background: green;
+  color: #ccc;
+  padding: 10px;
+}
+
+/*PRODUCTOS INFORMACIÓN*/
+#Producto-Info {
+  max-width: 1000px;
+  width: 60%;
+  margin: 20px auto;
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+  /*FLEXBOX*/
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+#Producto-Info-IMG {
+  width: 40%;
+  height: inherit;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#Producto-Info-IMG img {
+  width: 150px;
+  height: 410px;
+}
+
+#Producto-Info-TEXT {
+  width: 60%;
+  height: inherit;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#Producto-Info-TEXT > h2 {
+  font-size: 1.4rem;
+}
+
+#Producto-Info-TEXT > p {
+  padding-top: 20px;
+  font-size: 1.1rem;
+}
+
+/*VISTA DE CONTACTO*/
+#Contacto-Container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+#Form-container {
+  width: 90%;
+}
+
+#Contacto-Container h2 {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #6c63ff;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+#contacto-btn {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-family: "Josefin Sans", sans-serif;
+  border: 1px solid #e7bd70;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  color: black;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 0.2s ease-in;
+}
+
+#contacto-btn:hover {
+  background: #e7bd70;
+  box-shadow: 0 0 30px 5px #e7bd70;
+  transition: all 0.2s ease-out;
+}
+
+/*VISTA DE ERROR 404*/
+#Error {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+}
+
+#Error-Content {
+  padding: 50px;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+#Error-header h2 {
+  font-size: 2em;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+#Error-header h3 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.2em;
+}
+
+#Error-main {
+  margin: 20px auto;
+  text-align: center;
+}
+
+#Error-main img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+#Error-footer {
+  width: 100%;
+  text-align: center;
+}
+
+#Error-btn {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-family: "Josefin Sans", sans-serif;
+  border: 1px solid #e7bd70;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  color: black;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 0.2s ease-in;
+}
+
+#Error-btn:hover {
+  background: #e7bd70;
+  box-shadow: 0 0 10px 5px #e7bd70;
+  transition: all 0.2s ease-out;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 768px) {
+  nav ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    flex-wrap: nowrap;
-}
-
-#Header-content{
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    padding: 10px;
-}
-
-#Header-content > h1{
-    color: gold;
-    font-size: 3rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-/*FIN HEADER*/
-
-/*INICIO NAV*/
-#Nav{
-    width: 100%;
-    height: 80px auto;
-    background-color: black;
-}
-
-#Nav-content{
-    max-width: 1200px;
-    height: inherit;
-    margin: 0 auto;
-    list-style-type: none;
-
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-}
+    width: 80%;
+  }
 
-#Nav-content > li {
-    border: 2px solid transparent;
-}
+  #Section-2-Content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-#Nav-content > li:hover{
-    background-color: rgba(218, 165, 32, 0.4);
-    border-top: 2px double gold;
-    transition: all 1s ease;
-}
+  #Section-2-Content-Left {
+    padding: 0px;
+  }
 
-#Nav-content > li > a{
-    display: block;
-    padding: 20px 60px;
-    text-decoration: none;
-    color: aliceblue;
-    font-weight: 600;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    letter-spacing: 1.2px;
-}
+  #Section-2-Content-Right {
+    padding: 0px;
+  }
 
-@media screen and (max-width: 450px) {
-    #Nav-content{
-        flex-direction: column;
-        background-color: yellowgreen;
-    }
+  #Section-3-Content {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #Section-3-Content-Left {
+    padding: 0px;
+  }
+
+  #Section-3-Content-Right {
+    padding: 0px;
+  }
+
+  #Section-4-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Section-4-items {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+
+  .Producto-title h4 {
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .Producto-text p {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  /*PRODUCTOS INFORMACIÓN*/
+  #Producto-Info {
+    width: 90%;
+    margin: 20px auto;
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+    /*FLEXBOX*/
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+
+  #Producto-Info-IMG {
+    width: 100%;
+    height: inherit;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  #Producto-Info-IMG img {
+    width: 150px;
+    height: 410px;
+  }
+
+  #Producto-Info-TEXT {
+    width: 100%;
+    height: inherit;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  #Producto-Info-TEXT > h2 {
+    font-size: 1.4rem;
+  }
+
+  #Producto-Info-TEXT > p {
+    padding-top: 20px;
+    font-size: 1.1rem;
+  }
 }
-/*FIN NAV*/
