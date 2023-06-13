@@ -1,0 +1,74 @@
+[
+    {
+        "producto_id" : 1,
+        "producto_title" : "Voopoo Drag 2 - Isla",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag ISLA es el dispositivo perfecto para aquellos que buscan un diseño elegante y una gran experiencia de vapeo! Con su estilo exclusivo y su rendimiento mejorado, este dispositivo es la combinación perfecta de moda y funcionalidad.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "1.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Isla"
+    },
+    {
+        "producto_id" : 2,
+        "producto_title" : "Voopoo Drag 2 - Fuego",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag FUEGO es el dispositivo perfecto para los amantes de la potencia y la intensidad! Con su aspecto imponente y su rendimiento mejorado, este dispositivo es la combinación perfecta de estilo y fuerza.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "2.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Fuego"
+    },
+    {
+        "producto_id" : 3,
+        "producto_title" : "Voopoo Drag 2 - Aurora",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Aurora es el dispositivo perfecto para aquellos que buscan una experiencia de vapeo colorida y vibrante! Con su diseño dinámico y su rendimiento mejorado, este dispositivo es la combinación perfecta de diversión y rendimiento.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "3.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Aurora"
+    },
+    {
+        "producto_id" : 4,
+        "producto_title" : "Voopoo Drag 2 - Escarlata",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Escarlata es el dispositivo perfecto para aquellos que buscan un aspecto impresionante y un rendimiento excepcional! Con su estilo exclusivo y su potencia mejorada, este dispositivo es la combinación perfecta de forma y función.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "4.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Aurora"
+    },
+    {
+        "producto_id" : 5,
+        "producto_title" : "Voopoo Drag 2 - Nube de Fuego",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Nube de Fuego es el dispositivo perfecto para aquellos que buscan una experiencia de vapeo intensa y emocionante! Con su aspecto ardiente y su rendimiento mejorado, este dispositivo es la combinación perfecta de fuego y fuerza.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "5.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Nube de Fuego"
+    },
+    {
+        "producto_id" : 6,
+        "producto_title" : "Voopoo Drag 2 - Rompecabezas",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Nube de Fuego es el dispositivo perfecto para aquellos que buscan una experiencia de vapeo intensa y emocionante! Con su aspecto ardiente y su rendimiento mejorado, este dispositivo es la combinación perfecta de fuego y fuerza.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "6.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Rompecabezas"
+    },
+    {
+        "producto_id" : 7,
+        "producto_title" : "Voopoo Drag 2 - Amanecer",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Amanecer es el dispositivo perfecto para los amantes del amanecer y los tonos cálidos! Con su aspecto impresionante y su rendimiento mejorado, este dispositivo es la combinación perfecta de forma y función.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "7.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Amanecer"
+    },
+    {
+        "producto_id" : 8,
+        "producto_title" : "Voopoo Drag 2 - Tinta",
+        "producto_description" : "El Voopoo Drag 2 es un Kit de inicio de vapeo avanzado con una apariencia llamativa. Con una potencia máxima de salida de 177W y una variedad de modos de operación, este kit de inicio ofrece un rendimiento excepcional. Además, cuenta con el icónico diseño Drag y una batería dual 18650 (no incluida) para una mayor duración de la batería. El kit incluye el tanque UFORCE T2 con capacidad de 5ml y la bobina U2 y N3.",
+        "producto_sinopsis" : "¡El Voopoo Drag Tinta es el dispositivo perfecto para aquellos que buscan un estilo elegante y sofisticado! Con su diseño de tinta y su rendimiento mejorado, este dispositivo es la combinación perfecta de elegancia y potencia.",
+        "producto_price" : 99.99,
+        "producto_imagen" : "8.webp",
+        "producto_imagen_alt" : "Voopoo Drag 2 - Tinta"
+    }
+]

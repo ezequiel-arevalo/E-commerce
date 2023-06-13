@@ -1,0 +1,10 @@
+Carrera: Diseño y Programación web
+Materia: Programación 2
+Cuatrimestre: 3ro
+Año: 2023
+Turno: Tarde
+Comisión: DWT3BV
+Nombre: Ezequiel
+Apellido: Arevalo
+Docente: Santiago GALLINO
+Carácter de entrega: 1er Parcial
