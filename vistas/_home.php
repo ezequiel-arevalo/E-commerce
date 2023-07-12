@@ -3,7 +3,7 @@
         <div id="Section-1-Content">
             <h2>Bienvenido a nuestro sitio</h2>
             <div id="Section-1-text">
-                <p>Somos tu tienda en línea para vapers y productos relacionados en Argentina. </p>
+                <p>Somos tu tienda en línea para vapers y productos relacionados en Argentina.</p>
                 <p>Ofrecemos una amplia selección de marcas y modelos, incluyendo el popular Voopoo Drag 2.</p>
                 <p>¡Explora nuestro catálogo en línea y encuentra todo lo que necesitas para tu experiencia de vaping!</p>
             </div>
@@ -18,7 +18,7 @@
             <p>Convertirnos en la tienda líder de vaporizadores en Argentina, ofreciendo una amplia gama de productos de alta calidad y brindando una experiencia de compra excepcional.</p>
         </div>
         <div id="Section-2-Content-Right">
-            <img src="./res/img/contenido/vision.webp" width="600" height="600" alt="Imagen de la visión">
+            <img src="./res/img/contenido/vision.webp" width="600" height="600" alt="" loading="lazy">
         </div>
     </div>
 </section>
@@ -27,7 +27,7 @@
     <div id="Section-3-Container">
         <div id="Section-3-Content">
             <div id="Section-3-Content-Left">
-                <img src="./res/img/contenido/mision.webp" width="600" height="600" alt="Imagen de la misión">
+                <img src="./res/img/contenido/mision.webp" width="600" height="600" alt="" loading="lazy">
             </div>
             <div id="Section-3-Content-Right">
                 <h2>Misión</h2>

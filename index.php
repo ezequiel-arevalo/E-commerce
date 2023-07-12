@@ -1,4 +1,6 @@
 <?php
+// Agregamos que siempre esté presente la clase DB.
+require_once __DIR__ . '/bootstrap/autoload.php';
 
 /** 
  * 
@@ -8,7 +10,10 @@
  * 
  **/
 
+// Obtener la vista actual del query string o establecerla como "_home" por defecto
 $vista = isset($_GET['s']) ? $_GET['s'] : '_home';
+
+// Definir las rutas y títulos correspondientes para cada vista
 $rutas = [
     '_404' => [
         'title' => 'MyShop: Página no encontrada'
@@ -24,22 +29,17 @@ $rutas = [
     ],
     '_contacto' => [
         'title' => 'MyShop: Contáctanos para cualquier consulta o sugerencia'
-    ],
-    '_iniciar-sesion' => [
-        'title' => 'MyShop: Iniciar Sesión'
-    ],
-    '_registrarse' => [
-        'title' => 'MyShop: Registrarse'
     ]
 ];
 
+// Verificar si la vista actual existe en las rutas definidas, de lo contrario, establecerla como "_404"
 if (!isset($rutas[$vista])) {
     $vista = '_404';
 }
 
+// Obtener las opciones de la vista actual
 $rutasOpciones = $rutas[$vista];
 $title = $rutasOpciones['title'];
-
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +82,8 @@ $title = $rutasOpciones['title'];
     <!--Inicio del Main-->
     <main>
         <?php
-        require './vistas/' . $vista . '.php';
+        // Incluir la vista correspondiente según la variable $vista
+        require 'vistas/' . $vista . '.php';
         ?>
     </main>
     <!--Fin del Main-->

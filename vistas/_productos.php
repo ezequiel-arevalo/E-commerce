@@ -1,9 +1,11 @@
-<?php 
-    // Traigo la biblioteca de productos, donde se encuentra mi función productos()
-    require_once __DIR__ . '/../bibliotecas/biblioteca.php';
-    
-    // Obtenemos la función donde se encuentran los productos y sus características
-    $productos = Productos();
+<?php
+use App\Models\Producto;
+use App\Models\PrecioSimbolo;
+
+// Obtener la función que devuelve los productos y sus características
+$productos = (new Producto)->Productos([
+    ['estados_publicacion_fk', '=', 2],
+]);
 ?>
 
 <div class="Vista-Title">
@@ -11,36 +13,44 @@
     <p>Revisa nuestro catálogo de productos</p>
 </div>
 <ul id="Productos">
-    <?php 
-        foreach($productos as $item){
+    <?php
+    // Iterar sobre cada producto obtenido
+    foreach ($productos as $item) {
+        // Obtener el objeto PrecioSimbolo asociado al producto
+        $precioSimbolo = (new PrecioSimbolo)->precioSimboloID($item->getPrecioSimboloFk());
     ?>
     <li>
         <article class="Producto-card">
             <div class="Producto-header">
                 <div class="Producto-Imagen">
-                    <img src="./res/img/productos/<?= $item->producto_imagen ?>" alt="<?=$item->producto_imagen_alt?>" loading="lazy">
+                    <!-- Mostrar la imagen del producto -->
+                    <img src="./res/img/productos/<?= $item->getProductoImagen(); ?>" alt="<?= $item->getProductoImagenAlt(); ?>" loading="lazy">
                 </div>
             </div>
             <div class="Producto-main">
                 <div class="Producto-title">
-                    <h4><?=$item->producto_title?></h4>
+                    <!-- Mostrar el título del producto -->
+                    <h4><?= $item->getProductoTitle(); ?></h4>
                 </div>
                 <div class="line"></div>
                 <div class="Producto-text">
-                    <p><?=$item->producto_sinopsis?></p>
+                    <!-- Mostrar la sinopsis del producto -->
+                    <p><?= $item->getProductoSinopsis(); ?></p>
                 </div>
             </div>
             <div class="Producto-footer">
                 <div class="Producto-precio">
-                    <span class="Precio">Precio: $<?=$item->producto_price?></span>    
+                    <!-- Mostrar el precio del producto junto con el símbolo del precio -->
+                    <span class="Precio">Precio: <?= $precioSimbolo->getPrecioSimboloNombre(); ?> <?= number_format($item->getProductoPrice(), 2); ?></span>
                 </div>
                 <div class="Producto-button">
-                    <a href="index.php?s=_informacion&id=<?=$item->producto_id?>" class="Producto-btn"> Ver más!</a>
+                    <!-- Enlace para ver más detalles del producto -->
+                    <a href="index.php?s=_informacion&id=<?= $item->getProductoId(); ?>" class="Producto-btn">¡Ver más!</a>
                 </div>
             </div>
         </article>
     </li>
     <?php
-        }
+    }
     ?>
 </ul>
