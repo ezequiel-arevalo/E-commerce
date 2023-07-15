@@ -1,5 +1,8 @@
 <?php
 
+//Agregamos el autoload de composter para tener acceso a sus clases
+require_once __DIR__ . '/../vendor/autoload.php';
+
 spl_autoload_register(function(string $className) {
     // Se remueve el prefijo 'App\' del nombre de la clase
     $className = substr($className, 4);

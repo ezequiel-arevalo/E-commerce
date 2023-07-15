@@ -93,7 +93,9 @@ if (isset($_SESSION['oldData'])) {
         <div class="form-fila">
             <p>Imagen actual</p>
             <?php if ($producto->getProductoImagen()): ?>
-                <img src="<?= '/../../res/img/productos/' . $producto->getProductoImagen(); ?>" alt="<?= $producto->getProductoImagenAlt(); ?>">
+                <picture>
+                    <img src="<?= './../res/img/productos/' . $producto->getProductoImagen(); ?>" alt="<?= $producto->getProductoImagenAlt(); ?>" loading="lazy">
+                </picture>
             <?php else: ?>
                 <p>No tiene imagen.</p>
             <?php endif; ?>

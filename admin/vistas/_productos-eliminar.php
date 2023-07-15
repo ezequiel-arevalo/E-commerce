@@ -10,7 +10,7 @@ $productos = (new Producto())->productoID($_GET['id']);
 </div>        
 <div id="Producto-Info">
     <div id="Producto-Info-IMG">
-        <img src="<?= './../res/img/productos/' . $productos->getProductoImagen();?>" alt="<?= $productos->getProductoImagenAlt();?>" width="150" height="410" loading="lazy">
+        <img src="<?= './../res/img/productos/big-' . $productos->getProductoImagen();?>" alt="<?= $productos->getProductoImagenAlt();?>" width="150" height="410" loading="lazy">
     </div>    
     <div id="Producto-Info-TEXT">
         <h3>Descripción:</h3>

@@ -21,6 +21,7 @@ $producto = (new Producto)->productoID($id);
 
 // Verificar si el producto existe
 if (!$producto) {
+    $_SESSION['mensajeError'] = 'El producto que quieres eliminar ya no existe.';
     header('Location: ../index.php?s=productos');
     exit;
 }
@@ -31,7 +32,7 @@ try {
 
     // Eliminar la imagen asociada si existe
     if ($producto->getProductoImagen() !== null) {
-        unlink(__DIR__ . '/../../res/img/productos/' . $producto->getProductoImagen());
+        unlink(__DIR__ . '/../../res/img/productos/big-' . $producto->getProductoImagen());
     }
 
     $_SESSION['mensajitoExito'] = "El producto fue eliminado con éxito";
@@ -39,6 +40,8 @@ try {
     exit;
 } catch (Exception $e) {
     // Si ocurre un error, redirigir a la página de productos
+    $_SESSION['mensajeError'] = 'Ocurrió un problema inesperado al tratar de eliminar el producto';
+    $_SESSION['oldData'] = $_POST;
     header('Location: ../index.php?s=_productos');
     exit;
 }

@@ -70,8 +70,8 @@ class Producto
         if (count($busqueda) > 0) {
             $whereConditions = [];
             foreach ($busqueda as $busquedaDatos) {
-                $whereConditions[] = $busquedaDatos[0] . ' ' . $busquedaDatos[1] . ' :param';
-                $queryParams['param'] = $busquedaDatos[2];
+                $whereConditions[] = $busquedaDatos[0] . ' ' . $busquedaDatos[1] . ' ?';
+                $queryParams[] = $busquedaDatos[2];
             }
 
             $query .= " WHERE " . implode(' AND ', $whereConditions);

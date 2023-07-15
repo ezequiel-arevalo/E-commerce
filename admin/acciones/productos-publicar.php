@@ -3,6 +3,7 @@
 // Importar las clases necesarias
 use App\Auth\Autenticacion;
 use App\Models\Producto;
+use Intervention\Image\ImageManagerStatic as Image;
 
 // Iniciar la sesión y cargar el archivo de autoloading
 session_start();
@@ -57,11 +58,21 @@ if(count($errores) > 0) {
 }
 
 // Procesar la imagen del producto si se ha subido una
-if (!empty($_FILES['imagen']['tmp_name'])) {
+if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis') . "_" . $imagen['name'];
-    move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../res/img/productos/' . $nombreImagen);
-}
+    
+    Image::make($imagen['tmp_name'])
+    ->resize(150, 150, function($constraint){
+        $constraint->aspectRatio();
+    })
+    ->save(__DIR__ . '/../../res/img/productos/' . $nombreImagen);
 
+    Image::make($imagen['tmp_name'])
+    ->resize(400, 400, function($constraint){
+        $constraint->aspectRatio();
+    })
+    ->save(__DIR__ . '/../../res/img/productos/big-' . $nombreImagen);
+}
 try {
     // Crear un nuevo producto en la base de datos
     (new Producto)->crear([

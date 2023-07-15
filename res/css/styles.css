@@ -384,11 +384,6 @@ VISTA DE HOME
   text-align: center;
 }
 
-.Producto-Imagen img {
-  width: 150px;
-  height: 410px;
-}
-
 /*PRODUCTOS MAIN*/
 .Producto-main {
   width: 100%;
@@ -413,6 +408,18 @@ VISTA DE HOME
   height: 2px;
   background-color: var(--color-border);
   margin: 0 auto;
+}
+
+.Producto-categoria > p{
+  text-align: center;
+  background-color: #212121;
+  color: #f2f2f2;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  border-radius: 999px;
+  max-width: 250px;
+  padding: 10px;
+  margin: 10px auto;
 }
 
 .Producto-text {
@@ -723,7 +730,12 @@ VISTA DE HOME
   }
 
   /*PRODUCTOS INFORMACIÓN*/
-  #Producto-Info {
+  .Producto-card {
+    width: 300px;
+    margin: 10px 0px;
+  }
+
+  #Producto-Info{
     width: 90%;
     margin: 20px auto;
     background: rgb(236, 236, 236);
@@ -1011,7 +1023,6 @@ table td a:hover {
   cursor: pointer;
   transition: all 300ms ease-in;
 }
-
 
 #Cerrar-Sesion-btn:hover{
   background-color: #e7bd70;

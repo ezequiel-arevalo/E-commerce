@@ -4,6 +4,7 @@
 use App\Auth\Autenticacion;
 use App\Models\Producto;
 use App\Models\PrecioSimbolo;
+use Intervention\Image\ImageManagerStatic as Image;
 
 // Iniciar la sesión y cargar el archivo de autoloading
 session_start();
@@ -34,6 +35,7 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
 
 // Verificar si el producto existe
 if (!$producto) {
+    $_SESSION['mensajeError'] = 'El producto que no existe.';
     header('Location: ../index.php?s=productos');
     exit;
 }
@@ -66,9 +68,20 @@ if(count($errores) > 0) {
     exit;
 }
 
-if (!empty($_FILES['imagen']['tmp_name'])) {
+if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis') . "_" . $imagen['name'];
-    move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../res/img/productos/' . $nombreImagen);
+    
+    Image::make($imagen['tmp_name'])
+    ->resize(150, 150, function($constraint){
+        $constraint->aspectRatio();
+    })
+    ->save(__DIR__ . '/../../res/img/productos/' . $nombreImagen);
+
+    Image::make($imagen['tmp_name'])
+    ->resize(400, 400, function($constraint){
+        $constraint->aspectRatio();
+    })
+    ->save(__DIR__ . '/../../res/img/productos/big-' . $nombreImagen);
 }
 
 try {
@@ -88,12 +101,15 @@ try {
     // Eliminar la imagen anterior si se cargó una nueva
     if (isset($nombreImagen) && $producto->getProductoImagen() !== null) {
         unlink(__DIR__ . '/../../res/img/productos/' . $producto->getProductoImagen());
+        unlink(__DIR__ . '/../../res/img/productos/big-' . $producto->getProductoImagen());
     }
 
     $_SESSION['mensajeExito'] = "El producto <b>" . $titulo . "</b> se editó correctamente.";
     header("Location: ../index.php?s=_productos");
     exit;
 } catch (Exception $e) {
+    $_SESSION['mensajeError'] = 'Ocurrió un problema inesperado al tratar de editar el producto';
+    $_SESSION['oldData'] = $_POST;
     header("Location: ../index.php?s=_productos-editar&id=" . $id);
     exit;
 }

@@ -1,6 +1,5 @@
 <?php 
 use App\Models\Producto;
-use App\Models\PrecioSimbolo;
 
 // Obtener la lista de productos utilizando el método "Productos" de la clase Producto
 $productos = (new Producto())->Productos();
