@@ -53,11 +53,12 @@ class Producto
     public function Productos(array $busqueda = []): array
     {
         $db = (new DB())->getConexion();
+        echo "[Producto] Nuevo Query Productos()";
         $query = "SELECT 
-                        n.*,
-                        ep.nombre AS 'estado_publicacion',
-                        c.categoria_nombre AS 'nombre_categoria',
-                        ps.precio_simbolo_nombre AS 'nombre_precio_simbolo'
+                    n.*, 
+                    ep.nombre AS 'estado_publicacion',
+                    c.categoria_nombre AS 'nombre_categoria',
+                    ps.precio_simbolo_nombre AS 'nombre_precio_simbolo'
                   FROM productos n
                   INNER JOIN estados_publicacion ep
                   ON n.estados_publicacion_fk = ep.estado_publicacion_id
@@ -65,7 +66,7 @@ class Producto
                   ON n.categorias_fk = c.categoria_id
                   INNER JOIN precio_simbolo ps
                   ON n.precio_simbolo_fk = ps.precio_simbolo_id";
-
+    
         $queryParams = [];
         if (count($busqueda) > 0) {
             $whereConditions = [];
@@ -73,46 +74,45 @@ class Producto
                 $whereConditions[] = $busquedaDatos[0] . ' ' . $busquedaDatos[1] . ' ?';
                 $queryParams[] = $busquedaDatos[2];
             }
-
+    
             $query .= " WHERE " . implode(' AND ', $whereConditions);
         }
-
+    
         $stmt = $db->prepare($query);
         $stmt->execute($queryParams);
-
+    
         $productos = [];
-
+    
         while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $producto = new Producto();
             $producto->cargarDatosDeArray($registro);
-
+    
             $estado = new EstadoPublicacion();
             $estado->cargarDatosDeArray([
                 'estado_publicacion_id' => $registro['estados_publicacion_fk'],
                 'nombre' => $registro['estado_publicacion'],
             ]);
             $producto->setEstadoPublicacion($estado);
-
+    
             $categoria = new Categoria();
             $categoria->cargarDatosDeArray([
                 'categoria_id' => $registro['categorias_fk'],
                 'categoria_nombre' => $registro['nombre_categoria'],
             ]);
             $producto->setNombreCategoria($categoria);
-
+    
             $precioSimbolo = new PrecioSimbolo();
             $precioSimbolo->cargarDatosDeArray([
                 'precio_simbolo_id' => $registro['precio_simbolo_fk'],
                 'precio_simbolo_nombre' => $registro['nombre_precio_simbolo'],
             ]);
             $producto->setPrecioSimbolo($precioSimbolo);
-
+    
             $productos[] = $producto;
         }
-
+    
         return $productos;
     }
-
     /**
      * Obtiene un producto por su ID.
      *

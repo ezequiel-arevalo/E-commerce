@@ -1,7 +1,5 @@
 <?php
 use App\Models\Producto;
-use App\Models\PrecioSimbolo;
-use App\Models\Categoria; // Agrega la clase Categoria
 
 // Obtener la función que devuelve los productos y sus características
 $busqueda = [
@@ -42,10 +40,6 @@ $productos = (new Producto)->Productos($busqueda);
     // Iterar sobre cada producto obtenido
     foreach ($productos as $item) {
         // Obtener el objeto PrecioSimbolo asociado al producto
-        $precioSimbolo = (new PrecioSimbolo)->precioSimboloID($item->getPrecioSimboloFk());
-
-        // Obtener el objeto Categoria asociado al producto
-        $categoria = Categoria::categoriaPorId($item->getCategoriasFk());
     ?>
     <li>
         <article class="Producto-card">
@@ -63,9 +57,9 @@ $productos = (new Producto)->Productos($busqueda);
                     <h4><?= $item->getProductoTitle(); ?></h4>
                 </div>
                 <div class="line"></div>
-                <div class="Producto-categoria"> <!-- Agrega una nueva sección para mostrar la categoría -->
+                <div class="Producto-categoria">
                     <!-- Mostrar la categoría del producto -->
-                    <p>Tipo: <?= $categoria ? $categoria->getCategoriaNombre() : 'Sin categoría'; ?></p>
+                    <p>Tipo: <?= $item->getNombreCategoria()->getCategoriaNombre(); ?></p>
                 </div>
                 <div class="Producto-text">
                     <!-- Mostrar la sinopsis del producto -->
