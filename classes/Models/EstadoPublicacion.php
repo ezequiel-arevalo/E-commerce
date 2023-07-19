@@ -19,7 +19,7 @@ class EstadoPublicacion
     // Método para obtener todos los estados de publicación
     public function todos(): array
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM estados_publicacion";
         $stmt = $db->prepare($query);
         $stmt->execute();

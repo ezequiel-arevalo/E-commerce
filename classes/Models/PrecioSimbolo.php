@@ -17,7 +17,7 @@ class PrecioSimbolo
      */
     public function todos(): array
     {
-        $db = (new DB())->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM precio_simbolo";
         $stmt = $db->prepare($query);
         $stmt->execute();
@@ -43,7 +43,7 @@ class PrecioSimbolo
      */
     public function precioSimboloID(int $id): ?PrecioSimbolo
     {
-        $db = (new DB())->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM precio_simbolo WHERE precio_simbolo_id = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$id]);

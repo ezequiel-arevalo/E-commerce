@@ -121,7 +121,7 @@ class Producto
      */
     public function productoID(int $id): ?Producto
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM productos
                     WHERE productos_id = ?";
         $stmt = $db->prepare($query);
@@ -143,7 +143,7 @@ class Producto
      */
     public function crear(array $data)
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "INSERT INTO productos
         (usuario_fk, productos_title, productos_description, productos_sinopsis, productos_price, productos_img, productos_img_alt, categorias_fk, estados_publicacion_fk, precio_simbolo_fk)
         VALUES (:usuario_fk, :titulo, :descripcion, :sinopsis, :price, :img, :img_alt, :categorias_fk, :estados_publicacion_fk, :precio_simbolo_fk)";
@@ -171,7 +171,7 @@ class Producto
      */
     public function editar(int $id, array $data)
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "UPDATE productos
                   SET    productos_title          = :titulo,
                          productos_description    = :descripcion,
@@ -206,7 +206,7 @@ class Producto
      */
     public function eliminar(int $id)
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "DELETE FROM productos
                   WHERE productos_id = ?";
         $stmt = $db->prepare($query);

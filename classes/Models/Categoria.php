@@ -20,7 +20,7 @@ class Categoria
     // Método para obtener todas las categorías
     public function todos(): array
     {
-        $db = (new DB())->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM categorias";
         $stmt = $db->prepare($query);
         $stmt->execute();
@@ -38,7 +38,7 @@ class Categoria
 
     public static function categoriaPorId(int $id): ?Categoria
     {
-        $db = (new DB())->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT categoria_id, categoria_nombre FROM categorias WHERE categoria_id = :id";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

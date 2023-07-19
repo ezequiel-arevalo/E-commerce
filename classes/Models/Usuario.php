@@ -21,7 +21,7 @@ class Usuario
      */
     public function porId(string $id): ?Usuario
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM usuarios
                   WHERE usuarios_id = ?";
         $stmt = $db->prepare($query);
@@ -46,7 +46,7 @@ class Usuario
      */
     public function porEmail(string $email): ?Usuario
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM usuarios
                   WHERE usuarios_email = ?";
         $stmt = $db->prepare($query);
