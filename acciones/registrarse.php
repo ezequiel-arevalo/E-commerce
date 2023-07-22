@@ -16,7 +16,7 @@ try {
     header("Location: ../index.php?s=_iniciar-sesion");
     exit;
 } catch (Exception $e) {
-    print_r($e);
     $_SESSION['mensajeError'] = "Ocurrió un error al crear la cuenta";
+    header("Location: ../index.php?s=_registrarse");
     exit;
 }
