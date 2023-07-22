@@ -1,6 +1,9 @@
 <?php
+use App\Auth\Autenticacion;
+
 // Agregamos que siempre esté presente la clase DB.
 require_once __DIR__ . '/bootstrap/autoload.php';
+session_start();
 
 /** 
  * 
@@ -29,6 +32,16 @@ $rutas = [
     ],
     '_contacto' => [
         'title' => 'MyShop: Contáctanos para cualquier consulta o sugerencia'
+    ],
+    '_iniciar-sesion' => [
+        'title' => 'MyShop: Logueo de usuarios'
+    ],
+    '_registrarse' => [
+        'title' => 'MyShop: Registro de usuarios'
+    ],
+    '_perfil' => [
+        'title' => 'MyShop: My Account',
+        'requiereAutenticacion' => true,
     ]
 ];
 
@@ -40,6 +53,17 @@ if (!isset($rutas[$vista])) {
 // Obtener las opciones de la vista actual
 $rutasOpciones = $rutas[$vista];
 $title = $rutasOpciones['title'];
+
+// Crear instancia del objeto Autenticacion
+$Autenticacion = new Autenticacion();
+
+// Verificar si la vista requiere autenticación y el usuario no está autenticado, redirigir a la página de inicio de sesión
+$requiereAutenticacion = $rutasOpciones['requiereAutenticacion'] ?? false;
+if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
+    $_SESSION['mensajeError'] =  "¡Se requiere haber iniciado sesión para ver este contenido!";
+    header("Location: index.php?s=_iniciar-sesion");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,15 +99,56 @@ $title = $rutasOpciones['title'];
             <li><a href="index.php?s=_home" class="list-item-link">Home</a></li>
             <li><a href="index.php?s=_productos" class="list-item-link">Productos</a></li>
             <li><a href="index.php?s=_contacto" class="list-item-link">Contacto</a></li>
+        <?php 
+            if($Autenticacion->estaAutenticado()):
+        ?>
+            <li><a href="index.php?s=_perfil" class="list-item-link">Perfil</a></li>
+            <li>
+                <form action="acciones/cerrar.sesion.php" method="post">
+                    <!-- Mostrar el nombre de usuario y el botón de cerrar sesión -->
+                    <button type="submit" id="Cerrar-Sesion-btn"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
+                </form>
+            </li>
+        <?php 
+            else:
+        ?>
+            <li><a href="index.php?s=_iniciar-sesion" class="list-item-link">Iniciar Sesión</a></li>
+            <li><a href="index.php?s=_registrarse" class="list-item-link">Registrarse</a></li>
+        <?php 
+            endif;
+        ?>
         </ul>
     </nav>
     <!--Fin de Nav-->
 
     <!--Inicio del Main-->
-    <main>
+    <main> 
+        <div>
+            <!-- Imprimir el mensaje de éxito, si existe -->
+            <?php
+            if (isset($_SESSION['mensajeExito'])):
+            ?>
+                <div class="mensajeExito"><?= $_SESSION['mensajeExito']; ?></div>
+            <?php
+                // Una vez que usamos el valor, lo eliminamos
+                unset($_SESSION['mensajeExito']);
+            endif;
+            ?>
+
+            <!-- Imprimir el mensaje de error, si existe -->
+            <?php
+            if (isset($_SESSION['mensajeError'])):
+            ?>
+                <div class="mensajeError"><?= $_SESSION['mensajeError']; ?></div>
+            <?php
+                // Una vez que usamos el valor, lo eliminamos
+                unset($_SESSION['mensajeError']);
+            endif;
+            ?>
+        </div>
         <?php
         // Incluir la vista correspondiente según la variable $vista
-        require 'vistas/' . $vista . '.php';
+        require './vistas/' . $vista . '.php';
         ?>
     </main>
     <!--Fin del Main-->

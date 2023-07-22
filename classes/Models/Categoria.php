@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Models;
-use App\Database\DB;
 
+use App\Database\DB;
 use PDO;
 
 class Categoria
 {
+    protected string $tabla = "categorias";
     private int $categoriaId;
     private string $categoriaNombre;
 
@@ -17,7 +18,6 @@ class Categoria
         $this->setCategoriaNombre($data['categoria_nombre']);
     }
 
-    // Método para obtener todas las categorías
     public function todos(): array
     {
         $db = DB::getConexion();
@@ -34,25 +34,6 @@ class Categoria
         }
 
         return $categorias;
-    }
-
-    public static function categoriaPorId(int $id): ?Categoria
-    {
-        $db = DB::getConexion();
-        $query = "SELECT categoria_id, categoria_nombre FROM categorias WHERE categoria_id = :id";
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $registro = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($registro) {
-            $categoria = new Categoria();
-            $categoria->cargarDatosDeArray($registro);
-            return $categoria;
-        } else {
-            return null;
-        }
     }
 
     // Getter para categoriaId

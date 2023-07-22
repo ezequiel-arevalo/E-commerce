@@ -5,38 +5,15 @@ namespace App\Models;
 use App\Database\DB;
 use PDO;
 
-class Usuario
+class Usuario extends Modelo
 {
+    protected string $tabla = "usuarios";
+    protected string $clavePrimaria = "usuarios_id";
     private int $usuarios_id;
     private int $roles_fk;
     private string $usuarios_email;
     private string $usuarios_password;
     private ?string $usuarios_username;
-
-    /**
-     * Obtiene un usuario por su ID.
-     *
-     * @param string $id ID del usuario.
-     * @return Usuario|null Objeto Usuario si existe, o null si no se encuentra.
-     */
-    public function porId(string $id): ?Usuario
-    {
-        $db = DB::getConexion();
-        $query = "SELECT * FROM usuarios
-                  WHERE usuarios_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
-    
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Usuario::class);
-        $usuario = $stmt->fetch();
-
-        // Si no existe el usuario, se retorna null
-        if (!$usuario) {
-            return null;
-        }
-
-        return $usuario;
-    }
 
     /**
      * Obtiene un usuario por su dirección de correo electrónico.
@@ -46,7 +23,7 @@ class Usuario
      */
     public function porEmail(string $email): ?Usuario
     {
-        $db = DB::getConexion();
+        $db = (new DB)->getConexion();
         $query = "SELECT * FROM usuarios
                   WHERE usuarios_email = ?";
         $stmt = $db->prepare($query);
@@ -61,6 +38,19 @@ class Usuario
         }
 
         return $usuario;
+    }
+    
+    public function crear(array $data)
+    {
+        $db = (new DB)->getConexion();
+        $query = "INSERT INTO usuarios (usuarios_email, usuarios_password, roles_fk)
+                  VALUES (:usuarios_email, :usuarios_password, :roles_fk)";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            'usuarios_email'     => $data['usuarios_email'],
+            'usuarios_password'  => $data['usuarios_password'],
+            'roles_fk'  => $data['roles_fk'],
+        ]);
     }
 
     // Métodos getters y setters para las propiedades de la clase...

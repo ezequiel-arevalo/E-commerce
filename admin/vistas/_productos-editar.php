@@ -1,21 +1,11 @@
 <?php
 
-use App\Models\Producto;
-use App\Models\EstadoPublicacion;
-use App\Models\Categoria;
-use App\Models\PrecioSimbolo;
-
-// Obtener la lista de estados de publicación utilizando el método "todos" de la clase EstadoPublicacion
-$EstadoPublicacion = (new EstadoPublicacion())->todos();
-
-// Obtener la lista de categorías utilizando el método "todos" de la clase Categoria
-$categoria = (new Categoria())->todos();
-
-// Obtener la lista de símbolos de precio utilizando el método "todos" de la clase PrecioSimbolo
-$PrecioSimbolo = (new PrecioSimbolo())->todos();
+$producto          = (new App\Models\Producto())          ->productoID($_GET['id']);
+$EstadoPublicacion = (new \App\Models\EstadoPublicacion())->todo();
+$PrecioSimbolo     = (new \App\Models\PrecioSimbolo())    ->todo();
+$Categoria         = (new \App\Models\Categoria())        ->todos();
 
 // Obtener el producto utilizando el método "productoID" de la clase Producto y pasando el ID obtenido de $_GET['id']
-$producto = (new Producto())->productoID($_GET['id']);
 
 // Verificar si existen errores almacenados en la sesión y asignarlos a la variable $errores
 if (isset($_SESSION['errores'])) {
@@ -128,7 +118,7 @@ if (isset($_SESSION['oldData'])) {
         <div class="form-fila">
             <label for="categorias_fk">Categoría</label>
             <select name="categorias_fk" id="categorias_fk">
-                <?php foreach ($categoria as $item): ?>
+                <?php foreach ($Categoria as $item): ?>
                     <option 
                         value="<?= $item->getCategoriaId(); ?>"
                         <?= $item->getCategoriaId() == ($oldData['categorias_fk'] ?? $producto->getCategoriasFk()) ? 'selected' : ''; ?>

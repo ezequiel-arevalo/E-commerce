@@ -1,10 +1,5 @@
 <?php
 
-use App\Models\EstadoPublicacion;
-use App\Models\Categoria;
-use App\Models\PrecioSimbolo;
-
-// Verificar si existen errores almacenados en la sesión y asignarlos a la variable $errores
 if (isset($_SESSION['errores'])) {
     $errores = $_SESSION['errores'];
     unset($_SESSION['errores']);
@@ -12,7 +7,6 @@ if (isset($_SESSION['errores'])) {
     $errores = [];
 }
 
-// Verificar si existen datos antiguos almacenados en la sesión y asignarlos a la variable $oldData
 if (isset($_SESSION['oldData'])) {
     $oldData = $_SESSION['oldData'];
     unset($_SESSION['oldData']);
@@ -24,14 +18,9 @@ if (isset($_SESSION['oldData'])) {
     ];
 }
 
-// Obtener la lista de estados de publicación utilizando el método "todos" de la clase EstadoPublicacion
-$EstadoPublicacion = (new EstadoPublicacion())->todos();
-
-// Obtener la lista de categorías utilizando el método "todos" de la clase Categoria
-$categoria = (new Categoria())->todos();
-
-// Obtener la lista de símbolos de precio utilizando el método "todos" de la clase PrecioSimbolo
-$PrecioSimbolo = (new PrecioSimbolo())->todos();
+$EstadoPublicacion = (new \App\Models\EstadoPublicacion())->todo();
+$PrecioSimbolo     = (new \App\Models\PrecioSimbolo())    ->todo();
+$Categoria         = (new \App\Models\Categoria())        ->todos();
 ?>
 
 <section id="crear-productos">
@@ -77,6 +66,7 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
             <?php endif; ?>
         </div>
 
+        
         <div class="form-fila">
             <label for="precio_simbolo_fk">Tipo de moneda:</label>
             <select name="precio_simbolo_fk" id="precio_simbolo_fk">
@@ -86,10 +76,10 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
                     <option 
                         value="<?= $item->getPrecioSimboloId();?>"
                         <?= $item->getPrecioSimboloId() == $oldData['precio_simbolo_fk'] ? 'selected' : '';?>
-                    >
+                        >
                         <?= $item->getPrecioSimboloNombre();?>
                     </option>
-                <?php
+                    <?php
                 endforeach;
                 ?>
             </select>
@@ -97,22 +87,23 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
         <div class="form-fila">
             <label for="price">Precio</label>
             <input type="number" name="price" id="price" step="0.01" value="<?= $oldData['price'] ?? null ;?>" <?php if (isset($errores['price'])): ?>aria-describedby="error-price"<?php endif; ?>>
+                
+                <?php if (isset($errores['price'])): ?>
+                    <div class="msg-error" id="error-price"><?= $errores['price']; ?></div>
+                    <?php endif; ?>
+                </div>
 
-            <?php if (isset($errores['price'])): ?>
-                <div class="msg-error" id="error-price"><?= $errores['price']; ?></div>
-            <?php endif; ?>
-        </div>
-
-        <div class="form-fila">
-            <label for="imagen">Imagen <span class="msg-opcional">(opcional)</span></label>
+                <div class="form-fila">
+                    <label for="imagen">Imagen <span class="msg-opcional">(opcional)</span></label>
             <input type="file" name="imagen" id="imagen">
         </div>
-
+        
         <div class="form-fila">
             <label for="imagen_alt">Descripción de la imagen <span class="msg-opcional">(opcional)</span></label>
             <input type="text" name="imagen_alt" id="imagen_alt" value="<?= $oldData['imagen_alt'] ?? null ;?>">
         </div>
-
+        
+        
         <div class="form-fila">
             <label for="estados_publicacion_fk">Estado de publicación</label>
             <select name="estados_publicacion_fk" id="estados_publicacion_fk">
@@ -120,22 +111,22 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
                 foreach ($EstadoPublicacion as $estado):
                 ?>
                     <option 
-                        value="<?= $estado->getEstadoPublicacionId();?>"
-                        <?= $estado->getEstadoPublicacionId() == $oldData['estados_publicacion_fk'] ? 'selected' : '';?>
+                    value="<?= $estado->getEstadoPublicacionId();?>"
+                    <?= $estado->getEstadoPublicacionId() == $oldData['estados_publicacion_fk'] ? 'selected' : '';?>
                     >
-                        <?= $estado->getNombre();?>
-                    </option>
+                    <?= $estado->getNombre();?>
+                </option>
                 <?php
                 endforeach;
                 ?>
             </select>
         </div>
-
+        
         <div class="form-fila">
             <label for="categorias_fk">Categoría</label>
             <select name="categorias_fk" id="categorias_fk">
                 <?php
-                foreach ($categoria as $item):
+                foreach ($Categoria as $item):
                 ?>
                     <option 
                         value="<?= $item->getCategoriaId();?>"
@@ -148,7 +139,7 @@ $PrecioSimbolo = (new PrecioSimbolo())->todos();
                 ?>
             </select>
         </div>
-
+        
         <button type="submit" id="crear-productos-btn">Publicar</button>
     </form>
 </section>

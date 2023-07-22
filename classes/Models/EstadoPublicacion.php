@@ -1,31 +1,19 @@
 <?php
 
 namespace App\Models;
-use App\Database\DB;
-use PDO;
 
-class EstadoPublicacion
+class EstadoPublicacion extends Modelo
 {
+    protected string $tabla = "estados_publicacion";
+    
     private int $estado_publicacion_id;
     private string $nombre;
-
+    
     // Método para cargar los datos de un array en la instancia de la clase
     public function cargarDatosDeArray(array $data): void
     {
         $this->setEstadoPublicacionId($data['estado_publicacion_id']);
         $this->setNombre($data['nombre']);
-    }
-
-    // Método para obtener todos los estados de publicación
-    public function todos(): array
-    {
-        $db = DB::getConexion();
-        $query = "SELECT * FROM estados_publicacion";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-
-        $stmt->setFetchMode(PDO::FETCH_CLASS, EstadoPublicacion::class);
-        return $stmt->fetchAll();
     }
 
     // Getter para estado_publicacion_id

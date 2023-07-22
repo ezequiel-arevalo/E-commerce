@@ -19,11 +19,11 @@ $productos = (new Producto)->Productos($busqueda);
     <p>Revisa nuestro catálogo de productos</p>
 </div>
 
-<div>
+<div id="buscador-productos">
     <h2>Buscador:</h2>
-    <form action="index.php?s=_productos" method="get" id="Form-container" style="margin: 0px auto; max-width: 600px;">
+    <form action="index.php?s=_productos" method="get">
         <input type="hidden" name="s" value="_productos">
-        <div class="form-group">
+        <div>
             <label for="titulo">Titulo</label>
             <input 
                 type="search" 
@@ -34,12 +34,10 @@ $productos = (new Producto)->Productos($busqueda);
         </div>
     </form>
 </div>
-
 <ul id="Productos">
     <?php
     // Iterar sobre cada producto obtenido
     foreach ($productos as $item) {
-        // Obtener el objeto PrecioSimbolo asociado al producto
     ?>
     <li>
         <article class="Producto-card">
@@ -69,7 +67,7 @@ $productos = (new Producto)->Productos($busqueda);
             <div class="Producto-footer">
                 <div class="Producto-precio">
                     <!-- Mostrar el precio del producto junto con el símbolo del precio -->
-                    <span class="Precio">Precio: <?= $precioSimbolo->getPrecioSimboloNombre(); ?> <?= number_format($item->getProductoPrice(), 2); ?></span>
+                    <span class="Precio">Precio: <?= $item->getPrecioSimbolo()->getPrecioSimboloNombre(); ?> <?= number_format($item->getProductoPrice(), 2); ?></span>
                 </div>
                 <div class="Producto-button">
                     <!-- Enlace para ver más detalles del producto -->

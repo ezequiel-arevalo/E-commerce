@@ -2,70 +2,12 @@
 
 namespace App\Models;
 
-use App\Database\DB;
-use PDO;
-
-class PrecioSimbolo
+class PrecioSimbolo extends Modelo
 {
+    protected string $tabla = "precio_simbolo";
     private int $precio_simbolo_id;
     private string $precio_simbolo_nombre;
-    
-    /**
-     * Obtiene todos los símbolos de precio.
-     *
-     * @return array Arreglo de objetos PrecioSimbolo.
-     */
-    public function todos(): array
-    {
-        $db = DB::getConexion();
-        $query = "SELECT * FROM precio_simbolo";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-    
-        $preciosSimbolo = [];
-    
-        while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $precioSimbolo = new PrecioSimbolo();
-            $precioSimbolo->setPrecioSimboloId($registro['precio_simbolo_id']);
-            $precioSimbolo->setPrecioSimboloNombre($registro['precio_simbolo_nombre']);
-    
-            $preciosSimbolo[] = $precioSimbolo;
-        }
-    
-        return $preciosSimbolo;
-    }
-    
-    /**
-     * Obtiene un objeto PrecioSimbolo por su ID.
-     *
-     * @param int $id ID del precio símbolo.
-     * @return PrecioSimbolo|null El objeto PrecioSimbolo encontrado o null si no existe.
-     */
-    public function precioSimboloID(int $id): ?PrecioSimbolo
-    {
-        $db = DB::getConexion();
-        $query = "SELECT * FROM precio_simbolo WHERE precio_simbolo_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
-    
-        $registro = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        if (!$registro) {
-            return null;
-        }
-    
-        $precioSimbolo = new PrecioSimbolo();
-        $precioSimbolo->cargarDatosDeArray($registro);
-    
-        return $precioSimbolo;
-    }
-    
-    /**
-     * Carga los datos del precio símbolo desde un array.
-     *
-     * @param array $data Array con los datos del precio símbolo.
-     * @return void
-     */
+
     public function cargarDatosDeArray(array $data): void
     {
         $this->setPrecioSimboloId($data['precio_simbolo_id']);
@@ -95,5 +37,4 @@ class PrecioSimbolo
     {
         $this->precio_simbolo_nombre = $precio_simbolo_nombre;
     }
-
 }

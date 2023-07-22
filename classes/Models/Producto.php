@@ -5,8 +5,9 @@ namespace App\Models;
 use App\Database\DB;
 use PDO;
 
-class Producto
+class Producto extends Modelo
 {
+    protected string $tabla = "producto";
     private int $productos_id;
     private int $usuario_fk;
     private int $categorias_fk;
@@ -50,9 +51,9 @@ class Producto
      * @param array $busqueda Criterios de búsqueda para filtrar los productos.
      * @return array Arreglo de objetos Producto que coinciden con la búsqueda.
      */
-    public function Productos(array $busqueda = []): array
+    public static function Productos(array $busqueda = []): array
     {
-        $db = (new DB())->getConexion();
+        $db = DB::getConexion();
         echo "[Producto] Nuevo Query Productos()";
         $query = "SELECT 
                     n.*, 
@@ -100,7 +101,7 @@ class Producto
                 'categoria_nombre' => $registro['nombre_categoria'],
             ]);
             $producto->setNombreCategoria($categoria);
-    
+
             $precioSimbolo = new PrecioSimbolo();
             $precioSimbolo->cargarDatosDeArray([
                 'precio_simbolo_id' => $registro['precio_simbolo_fk'],
@@ -113,15 +114,17 @@ class Producto
     
         return $productos;
     }
+
     /**
      * Obtiene un producto por su ID.
      *
      * @param int $id ID del producto.
      * @return Producto|null El producto encontrado o null si no existe.
      */
-    public function productoID(int $id): ?Producto
+    public function productoID(int $id): ?static
     {
         $db = DB::getConexion();
+        echo "[Producto] Nuevo Query productoID()";
         $query = "SELECT * FROM productos
                     WHERE productos_id = ?";
         $stmt = $db->prepare($query);
@@ -141,9 +144,10 @@ class Producto
      * @param array $data Datos del producto a crear.
      * @return void
      */
-    public function crear(array $data)
+    public static function crear(array $data)
     {
         $db = DB::getConexion();
+        echo "[Producto] Nuevo Query crear()";
         $query = "INSERT INTO productos
         (usuario_fk, productos_title, productos_description, productos_sinopsis, productos_price, productos_img, productos_img_alt, categorias_fk, estados_publicacion_fk, precio_simbolo_fk)
         VALUES (:usuario_fk, :titulo, :descripcion, :sinopsis, :price, :img, :img_alt, :categorias_fk, :estados_publicacion_fk, :precio_simbolo_fk)";
@@ -169,9 +173,10 @@ class Producto
      * @param array $data Datos actualizados del producto.
      * @return void
      */
-    public function editar(int $id, array $data)
+    public static function editar(int $id, array $data)
     {
         $db = DB::getConexion();
+        echo "[Producto] Nuevo Query editar()";
         $query = "UPDATE productos
                   SET    productos_title          = :titulo,
                          productos_description    = :descripcion,
@@ -204,9 +209,10 @@ class Producto
      * @param int $id ID del producto a eliminar.
      * @return void
      */
-    public function eliminar(int $id)
+    public static function eliminar(int $id)
     {
         $db = DB::getConexion();
+        echo "[Producto] Nuevo Query eliminar()";
         $query = "DELETE FROM productos
                   WHERE productos_id = ?";
         $stmt = $db->prepare($query);
@@ -237,18 +243,7 @@ class Producto
         $this->usuario_fk = $usuario_fk;
     }
 
-    // Getter para categorias_fk
-    public function getCategoriasFk(): int
-    {
-        return $this->categorias_fk;
-    }
-
-    // Setter para categorias_fk
-    public function setCategoriasFk(int $categorias_fk): void
-    {
-        $this->categorias_fk = $categorias_fk;
-    }
-
+    
     // Getter para estados_publicacion_fk
     public function getEstadosPublicacionFk(): int
     {
@@ -260,7 +255,19 @@ class Producto
     {
         $this->estados_publicacion_fk = $estados_publicacion_fk;
     }
+    
+    // Getter para categorias_fk
+    public function getCategoriasFk(): int
+    {
+        return $this->categorias_fk;
+    }
 
+    // Setter para categorias_fk
+    public function setCategoriasFk(int $categorias_fk): void
+    {
+        $this->categorias_fk = $categorias_fk;
+    }
+    
     // Getter para productos_title
     public function getProductoTitle(): string
     {
