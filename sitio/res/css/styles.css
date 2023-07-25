@@ -23,6 +23,30 @@ html {
   list-style: none;
 }
 
+
+.fix-col{
+  min-width: 130px !important;
+  text-align: center;
+}
+
+.btn-square,
+.input-square {
+  border-radius: 0 !important; /* Quitamos los bordes redondos */
+}
+
+.btn-square {
+  width: 30px; /* Ancho cuadrado */
+  height: 30px; /* Altura cuadrada */
+  line-height: 1; /* Para centrar el contenido verticalmente */
+}
+
+.input-square {
+  width: 50px; /* Ancho cuadrado del input */
+  height: 30px; /* Altura cuadrada del input */
+  text-align: center; /* Para centrar el texto en el input */
+  border-radius: 5px; /* Agregamos bordes redondos al input */
+}
+
 /*HEADER Y FOOTER*/
 header,
 footer {
@@ -49,10 +73,19 @@ nav {
   align-items:  center !important;
 }
 
+.alert{
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.btn-close {
+  float: right !important;
+}
+
 /*MAIN*/
 main {
   width: 100%;
-  min-height: 85vh;
+  min-height: 76.2vh;
 }
 
 /*VISTA TITLE - SUBTITLE*/
@@ -322,6 +355,8 @@ VISTA DE HOME
 
 /*VISTA DE PRODUCTOS*/
 #Productos {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -331,6 +366,7 @@ VISTA DE HOME
 /*PRODUCTOS CARD*/
 .Producto-card {
   width: 430px;
+  min-height: 900px;
   margin: 20px;
   background: rgb(236, 236, 236);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -354,6 +390,7 @@ VISTA DE HOME
 /*PRODUCTOS MAIN*/
 .Producto-main {
   width: 100%;
+  min-height: 400px;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -633,6 +670,10 @@ VISTA DE HOME
 
 /*RESPONSIVE*/
 @media screen and (max-width: 768px) {
+  main{
+    min-height: 75.5vh;
+  }
+
   #Section-2-Content {
     flex-direction: column;
     justify-content: center;
@@ -673,6 +714,10 @@ VISTA DE HOME
   .Section-4-items {
     width: 90%;
     margin-bottom: 30px;
+  }
+
+  #Productos{
+    margin: 20px 0px;
   }
 
   .Producto-title h4 {
@@ -741,6 +786,57 @@ VISTA DE HOME
 
   #Error-Content{
     width: 90%;
+  }
+
+  #alert-error{
+    width: 100% !important;
+    text-align: center;
+    margin: 20px auto !important;
+  }
+
+  #buscador-productos{
+    display: flex;
+    flex-direction: column;
+  }
+  #buscador-productos {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #buscador-productos h2 {
+    padding-top: 0px;
+    text-align: left;
+    margin: 0 0 10px 0;
+  }
+
+  #buscador-productos form {
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #buscador-productos form .input-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #buscador-productos form .form-control {
+    width: 90%;
+    margin: 0px auto;
+  }
+  #buscador-productos form button {
+    width: 90%;
+    height: 40px;
+    margin: 0px auto;
+    border-radius: 0px 0px 15px 15px;
+  }
+
+  #Iniciar-Sesion-Container{
+    width: 90% !important;
+  }
+
+  #btn-login{
+    width: 100% !important;
   }
 }
 
@@ -1014,7 +1110,7 @@ table td a:hover {
 .mensajeError {
   color: #F1F1F1;
   background-color: #B63425;
-  padding: 10px 0px;
+  padding: 10px 10px;
   text-align: center;
 }
 
@@ -1073,50 +1169,80 @@ table td a:hover {
 }
 
 #buscador-productos {
-  height: 40px;
-  margin: 0px auto;
-  max-width: 700px;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+#buscador-productos h2 {
+  flex: 1;
+  padding-top: 25px;
+  padding-right: 20px;
+  text-align: right;
+  margin: 0;
+}
+
+#buscador-productos form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#buscador-productos form .input-group {
+  display: flex;
   align-items: center;
 }
 
-#buscador-productos>h2 {
+#buscador-productos form .form-label {
   text-align: left;
-  display: block;
-}
-
-#buscador-productos>form {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  margin: 0px auto;
-  text-align: center;
 }
 
-#buscador-productos>form>div>label {
-  font-size: 0px;
-  display: none;
-  visibility: hidden;
+#buscador-productos form .form-control {
+  flex: 2;
+  margin-right: 10px;
 }
 
-#buscador-productos>form>div>input[type="search"] {
-  padding: 4px;
-  border-radius: 15px 0px 0px 15px;
-  border: none;
-  margin-left: 10px;
-  border: 1px solid #e7bd70;
-  width: 60%;
+#buscador-productos form button {
+  width: 120px;
+  height: 40px;
 }
 
-#buscador-productos>form>div>button {
-  width: 70px;
-  height: 25px;
-  padding: 4px;
-  background-color: #ffffff;
-  border: none;
-  border: 1px solid #e7bd70;
-  margin-left: -4px;
-  border-left: 1px solid gainsboro;
-  border-radius: 0px 15px 15px 0px;
-}
+    /* Estilos personalizados */
+    #profile{
+      height: 76.2vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .profile-circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-name {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .profile-email {
+      font-size: 18px;
+      color: #666;
+    }

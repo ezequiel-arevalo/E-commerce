@@ -23,7 +23,7 @@ class Usuario extends Modelo
      */
     public function porEmail(string $email): ?Usuario
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM usuarios
                   WHERE usuarios_email = ?";
         $stmt = $db->prepare($query);
@@ -42,7 +42,7 @@ class Usuario extends Modelo
     
     public function crear(array $data)
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "INSERT INTO usuarios (usuarios_email, usuarios_password, roles_fk, usuarios_username)
                   VALUES (:usuarios_email, :usuarios_password, :roles_fk, :usuarios_username)";
         $stmt = $db->prepare($query);
@@ -64,7 +64,7 @@ class Usuario extends Modelo
      */
     public function editar(int $id, array $data): void
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "UPDATE usuarios 
                   SET usuarios_email = :usuarios_email, 
                       usuarios_username = :usuarios_username 
@@ -79,14 +79,13 @@ class Usuario extends Modelo
 
     public function eliminar(int $id): void
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "DELETE FROM usuarios WHERE usuarios_id = :usuarios_id";
         $stmt = $db->prepare($query);
         $stmt->execute([
             'usuarios_id' => $id,
         ]);
     }
-
 
     public function getUsuariosId(): int
     {

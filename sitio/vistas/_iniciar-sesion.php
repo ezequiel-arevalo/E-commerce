@@ -9,18 +9,18 @@ if (isset($_SESSION['oldData'])) {
 }
 ?>
 
-<div id="Iniciar-Sesion-Container" class="w-50 m-auto mt-5">
-    <form action="acciones/iniciar-sesion.php" method="post" id="Form-container">
+<div id="Iniciar-Sesion-Container" class="d-block w-50 m-auto mt-5">
+    <form action="acciones/iniciar-sesion.php" method="post" id="Form-container" class="m-auto">
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" id="email" aria-describedby="emailHelp" class="form-control" value="<?= $oldData['email'] ?? null ?>" required>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div id="emailHelp" class="form-text">Ingresé el email con el que se registro previamente</div>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" name="password" id="password" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <button type="submit" class="btn btn-primary m-auto d-block w-50" id="btn-login">Ingresar</button>
     </form>
 </div>

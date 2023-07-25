@@ -54,7 +54,6 @@ class Producto extends Modelo
     public static function Productos(array $busqueda = []): array
     {
         $db = DB::getConexion();
-        echo "[Producto] Nuevo Query Productos()";
         $query = "SELECT 
                     n.*, 
                     ep.nombre AS 'estado_publicacion',
@@ -124,7 +123,6 @@ class Producto extends Modelo
     public function productoID(int $id): ?static
     {
         $db = DB::getConexion();
-        echo "[Producto] Nuevo Query productoID()";
         $query = "SELECT * FROM productos
                     WHERE productos_id = ?";
         $stmt = $db->prepare($query);
@@ -147,7 +145,6 @@ class Producto extends Modelo
     public static function crear(array $data)
     {
         $db = DB::getConexion();
-        echo "[Producto] Nuevo Query crear()";
         $query = "INSERT INTO productos
         (usuario_fk, productos_title, productos_description, productos_sinopsis, productos_price, productos_img, productos_img_alt, categorias_fk, estados_publicacion_fk, precio_simbolo_fk)
         VALUES (:usuario_fk, :titulo, :descripcion, :sinopsis, :price, :img, :img_alt, :categorias_fk, :estados_publicacion_fk, :precio_simbolo_fk)";
@@ -176,7 +173,6 @@ class Producto extends Modelo
     public static function editar(int $id, array $data)
     {
         $db = DB::getConexion();
-        echo "[Producto] Nuevo Query editar()";
         $query = "UPDATE productos
                   SET    productos_title          = :titulo,
                          productos_description    = :descripcion,
@@ -212,7 +208,6 @@ class Producto extends Modelo
     public static function eliminar(int $id)
     {
         $db = DB::getConexion();
-        echo "[Producto] Nuevo Query eliminar()";
         $query = "DELETE FROM productos
                   WHERE productos_id = ?";
         $stmt = $db->prepare($query);

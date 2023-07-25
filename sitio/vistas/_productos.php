@@ -19,21 +19,23 @@ $productos = (new Producto)->Productos($busqueda);
     <p>Revisa nuestro catálogo de productos</p>
 </div>
 
-<!-- <div id="buscador-productos">
-    <h2>Buscador:</h2>
-    <form action="index.php?s=_productos" method="get">
-        <input type="hidden" name="s" value="_productos">
-        <div>
-            <label for="titulo">Titulo</label>
-            <input 
-                type="search" 
-                name="titulo" 
-                id="titulo"
-                value="<?= $_GET['titulo'] ?? null;?>">
-            <button type="submit">Buscar</button>
-        </div>
-    </form>
-</div> -->
+<div id="buscador-productos">
+  <h2>Buscador:</h2>
+  <form action="index.php" method="get">
+    <input type="hidden" name="s" value="_productos">
+    <div class="input-group">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input 
+        type="search" 
+        name="titulo" 
+        id="titulo"
+        value="<?= $_GET['titulo'] ?? null;?>"
+        class="form-control">
+      <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Buscar</button>
+    </div>
+  </form>
+</div>
+
 <ul id="Productos">
     <?php
     // Iterar sobre cada producto obtenido
@@ -80,31 +82,3 @@ $productos = (new Producto)->Productos($busqueda);
     }
     ?>
 </ul>
-<!-- 
-    TODO: Implementar nuevo tipo de card responsive con:
-    - Imagen y alt del producto
-    - Tiulo del producto
-    - Categoria del producto
-    - Precio del Producto
-    - Precio Simbolo del Producto
-    - Id del Producto
-    - Button de añadir al carrito (Solo visible para usuarios logeados) | Reemplazar por el button locked sin efecto de cursor
-    - Button de ver mas (Visible para todos)
-    
-    <div class="card" style="width: 18rem;">
-        <img src="./res/img/productos/big-<?= $item->getProductoImagen(); ?>" alt="<?= $item->getProductoImagenAlt(); ?>" class="card-img-top" loading="lazy">
-        <div class="card-body">
-            <h5 class="card-title"><?= $item->getProductoTitle(); ?></h5>
-            <p class="card-text">Tipo: <?= $item->getNombreCategoria()->getCategoriaNombre(); ?></p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><?= $item->getProductoSinopsis(); ?></li>
-            <li class="list-group-item">Precio: <?= $item->getPrecioSimbolo()->getPrecioSimboloNombre(); ?> <?= number_format($item->getProductoPrice(), 2); ?></li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Añadir a carrito</a>
-            <a href="index.php?s=_informacion&id=<?= $item->getProductoId(); ?>" class="Producto-btn card-link">¡Ver más!</a></a>
-        </div>
-    </div>
--->

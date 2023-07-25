@@ -29,7 +29,7 @@ class Modelo{
      */
     public function porId(int $id): ?static
     {
-        $db = (new DB)->getConexion();
+        $db = DB::getConexion();
         $query = "SELECT * FROM " . $this->tabla . "
                   WHERE " . $this->clavePrimaria . " = ?";
         $stmt = $db->prepare($query);
