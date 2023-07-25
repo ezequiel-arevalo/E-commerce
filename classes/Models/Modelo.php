@@ -14,7 +14,6 @@ class Modelo{
     {
         $db = DB::getConexion();
         $query = "SELECT * FROM " . $this->tabla;
-        echo "Este es un nuevo query $query <br>";
         $stmt = $db->prepare($query);
         $stmt->execute();
 

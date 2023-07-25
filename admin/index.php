@@ -29,8 +29,21 @@ $rutas = [
         'title' => 'MyShop: Eliminar productos',
         'requiereAutenticacion' => true,
     ],
-    '_iniciar-sesion' => [
-        'title' => 'MyShop: Iniciar Sesión'
+    '_gestion-usuarios' => [
+        'title' => 'MyShop: Eliminar productos',
+        'requiereAutenticacion' => true,
+    ],
+    '_gestion-usuarios' => [
+        'title' => 'MyShop: Eliminar productos',
+        'requiereAutenticacion' => true,
+    ],
+    '_usuarios-editar' => [
+        'title' => 'MyShop: Eliminar productos',
+        'requiereAutenticacion' => true,
+    ],
+    '_usuarios-eliminar' => [
+        'title' => 'MyShop: Eliminar productos',
+        'requiereAutenticacion' => true,
     ]
 ];
 
@@ -51,9 +64,9 @@ $Autenticacion = new Autenticacion();
 
 // Verificar si la vista requiere autenticación y el usuario no está autenticado, redirigir a la página de inicio de sesión
 $requiereAutenticacion = $rutasOpciones['requiereAutenticacion'] ?? false;
-if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
-    $_SESSION['mensajeError'] =  "¡Se requiere haber iniciado sesión para ver este contenido!";
-    header("Location: index.php?s=_iniciar-sesion");
+if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
+    $_SESSION['mensajeError'] =  "¡Se requiere haber iniciado sesión como administrador para ver este contenido!";
+    header("Location: ../index.php?s=_iniciar-sesion");
     exit;
 }
 ?>
@@ -73,40 +86,63 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
     <meta name="keywords" content="MyShop, tienda en línea, productos, calidad, precios asequibles">
 
     <!--CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link type="text/css" rel="stylesheet" href="../res/css/styles.css">
 </head>
 
 <body>
     <!--Inicio de Header-->
     <header>
-        <div id="Header-Logo">
-            <h1>MyShop</h1>
+    <nav class="navbar navbar-dark h-10">
+        <div class="container-fluid">
+            <div id="Header-Logo">
+                <a href="index.php">
+                    <h1>MyShop</h1>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <?php 
+                        if($Autenticacion->estaAutenticadoComoAdmin()):
+                    ?>
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php?s=_dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?s=_productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?s=_gestion-usuarios">Usuarios</a>
+                    </li>
+                        <form action="../acciones/cerrar-sesion.php" method="post">
+                            <button type="submit" class="btn bg-danger text-white"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
+                        </form>
+                    </li>
+                    <?php 
+                        else:
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?s=_iniciar-sesion">Iniciar Sesión</a>
+                        </li>
+                    <?php 
+                        endif;
+                    ?>
+                    </ul>
+                </div>
+            </div>
         </div>
+        </nav>
     </header>
     <!--Fin de Header-->
-    
-    <!--Inicio de Nav-->
-    <nav>
-        <?php 
-            if($Autenticacion->estaAutenticado()):
-        ?>
-        <!-- Mostrar el menú de navegación solo si el usuario está autenticado -->
-        <ul>
-            <li><a href="index.php?s=_dashboard" class="list-item-link">Dashboard</a></li>
-            <li><a href="index.php?s=_productos" class="list-item-link">Productos</a></li>
-            <li>
-                <form action="acciones/cerrar-sesion.php" method="post">
-                    <!-- Mostrar el nombre de usuario y el botón de cerrar sesión -->
-                    <button type="submit" id="Cerrar-Sesion-btn"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
-                </form>
-            </li>
-        </ul>
-        
-        <?php 
-            endif;
-        ?>
-    </nav>
-    <!--Fin de Nav-->
     
     <!--Inicio del Main-->
     <main>
@@ -147,5 +183,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
     </footer>
     <!--Fin del Footer-->
 
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

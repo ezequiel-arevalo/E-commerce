@@ -11,7 +11,7 @@ session_start();
 require_once __DIR__ . '/../../bootstrap/autoload.php';
 
 // Verificar si el usuario está autenticado
-if (!(new Autenticacion())->estaAutenticado()) {
+if (!(new Autenticacion())->estaAutenticadoComoAdmin()) {
     $_SESSION['mensajeError'] =  "¡Se requiere haber iniciado sesión para ver este contenido!";
     header("Location: ../index.php?s=_iniciar-sesion");
     exit;
@@ -31,7 +31,7 @@ $precio_simbolo_fk           = $_POST['precio_simbolo_fk'];
 
 // Obtener el producto a editar por su ID
 $producto = (new Producto)->productoID($id);
-$PrecioSimbolo = (new PrecioSimbolo())->todos();
+$PrecioSimbolo = (new PrecioSimbolo())->todo();
 
 // Verificar si el producto existe
 if (!$producto) {

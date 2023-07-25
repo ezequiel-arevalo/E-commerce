@@ -18,7 +18,7 @@
             <p>Convertirnos en la tienda líder de vaporizadores en Argentina, ofreciendo una amplia gama de productos de alta calidad y brindando una experiencia de compra excepcional.</p>
         </div>
         <div id="Section-2-Content-Right">
-            <img src="./res/img/contenido/vision.webp" width="600" height="600" alt="" loading="lazy">
+            <img src="./res/img/vision.png" width="400" height="400" alt="" loading="lazy" style="margin: 0 auto; text-align: center;">
         </div>
     </div>
 </section>
@@ -27,7 +27,7 @@
     <div id="Section-3-Container">
         <div id="Section-3-Content">
             <div id="Section-3-Content-Left">
-                <img src="./res/img/contenido/mision.webp" width="600" height="600" alt="" loading="lazy">
+                <img src="./res/img/mision.png" width="400" height="400" alt="" loading="lazy" style="margin: 0 auto; text-align: center;">
             </div>
             <div id="Section-3-Content-Right">
                 <h2>Misión</h2>

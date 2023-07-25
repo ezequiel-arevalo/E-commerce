@@ -42,6 +42,10 @@ $rutas = [
     '_perfil' => [
         'title' => 'MyShop: My Account',
         'requiereAutenticacion' => true,
+    ],
+    '_carrito' => [
+        'title' => 'MyShop: My carrito',
+        'requiereAutenticacion' => true,
     ]
 ];
 
@@ -81,45 +85,78 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
     <meta name="keywords" content="MyShop, tienda en línea, productos, calidad, precios asequibles">
 
     <!--CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link type="text/css" rel="stylesheet" href="./res/css/styles.css">
 </head>
 
 <body>
     <!--Inicio de Header-->
     <header>
-        <div id="Header-Logo">
-            <h1>MyShop</h1>
+    <nav class="navbar navbar-dark h-10">
+        <div class="container-fluid">
+            <div id="Header-Logo">
+                <a href="index.php">
+                    <h1>MyShop</h1>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php?s=_home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?s=_productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?s=_contacto">Contacto</a>
+                    </li>
+                    <?php 
+                        if($Autenticacion->estaAutenticado()):
+                    ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mi cuenta
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="index.php?s=_perfil">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="index.php?s=_carrito">Carrito</a></li>
+                        <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="dropdown-item">
+                            <form action="acciones/cerrar-sesion.php" method="post">
+                            <button type="submit" class="btn bg-danger text-white"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
+                            </form>
+                        </li>
+                        </ul>
+                    </li>
+                    <?php 
+                        else:
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?s=_iniciar-sesion">Iniciar Sesión</a>
+                            <a class="nav-link" href="index.php?s=_registrarse">Registrarse</a>
+                        </li>
+                    <?php 
+                        endif;
+                    ?>
+                    </ul>
+                </div>
+            </div>
         </div>
+        </nav>
     </header>
     <!--Fin de Header-->
-
-    <!--Inicio de Nav-->
-    <nav>
-        <ul>
-            <li><a href="index.php?s=_home" class="list-item-link">Home</a></li>
-            <li><a href="index.php?s=_productos" class="list-item-link">Productos</a></li>
-            <li><a href="index.php?s=_contacto" class="list-item-link">Contacto</a></li>
-        <?php 
-            if($Autenticacion->estaAutenticado()):
-        ?>
-            <li><a href="index.php?s=_perfil" class="list-item-link">Perfil</a></li>
-            <li>
-                <form action="acciones/cerrar.sesion.php" method="post">
-                    <!-- Mostrar el nombre de usuario y el botón de cerrar sesión -->
-                    <button type="submit" id="Cerrar-Sesion-btn"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
-                </form>
-            </li>
-        <?php 
-            else:
-        ?>
-            <li><a href="index.php?s=_iniciar-sesion" class="list-item-link">Iniciar Sesión</a></li>
-            <li><a href="index.php?s=_registrarse" class="list-item-link">Registrarse</a></li>
-        <?php 
-            endif;
-        ?>
-        </ul>
-    </nav>
-    <!--Fin de Nav-->
 
     <!--Inicio del Main-->
     <main> 

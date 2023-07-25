@@ -1,8 +1,7 @@
 <?php 
-use App\Models\Producto;
 
 // Obtener la lista de productos utilizando el método "Productos" de la clase Producto
-$productos = (new Producto())->Productos();
+$productos = (new App\Models\Producto())->Productos();
 ?>
 
 <!-- Vista de administración de productos -->
@@ -48,8 +47,8 @@ $productos = (new Producto())->Productos();
                     <td><img src="<?= './../res/img/productos/' . $producto->getProductoImagen(); ?>" alt="<?= $producto->getProductoImagenAlt(); ?>"></td>
                     <td>
                         <!-- Enlaces para editar y eliminar el producto -->
-                        <a href="index.php?s=_productos-editar&id=<?= $producto->getProductoId(); ?>" class="btn-editar-producto">Editar</a>
-                        <a href="index.php?s=_productos-eliminar&id=<?= $producto->getProductoId(); ?>" class="btn-borrar-producto">Eliminar</a>
+                        <a href="index.php?s=_productos-editar&id=<?= $producto->getProductoId(); ?>" class="btn btn-primary mb-1 accion-btn"><i class="bi bi-pencil"> </i>Editar</a>
+                        <a href="index.php?s=_productos-eliminar&id=<?= $producto->getProductoId(); ?>" class="btn btn-danger mt-1 accion-btn"><i class="bi bi-trash3"> </i>Borrar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

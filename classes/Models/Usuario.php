@@ -43,17 +43,50 @@ class Usuario extends Modelo
     public function crear(array $data)
     {
         $db = (new DB)->getConexion();
-        $query = "INSERT INTO usuarios (usuarios_email, usuarios_password, roles_fk)
-                  VALUES (:usuarios_email, :usuarios_password, :roles_fk)";
+        $query = "INSERT INTO usuarios (usuarios_email, usuarios_password, roles_fk, usuarios_username)
+                  VALUES (:usuarios_email, :usuarios_password, :roles_fk, :usuarios_username)";
         $stmt = $db->prepare($query);
         $stmt->execute([
+            'usuarios_username'  => $data['usuarios_username'],
             'usuarios_email'     => $data['usuarios_email'],
             'usuarios_password'  => $data['usuarios_password'],
-            'roles_fk'  => $data['roles_fk'],
+            'roles_fk'           => $data['roles_fk'],
         ]);
     }
 
-    // Métodos getters y setters para las propiedades de la clase...
+    /**
+     * Edita un usuario en la base de datos.
+     *
+     * @param int $id ID del usuario a editar.
+     * @param array $data Datos del usuario a actualizar.
+     * @throws \PDOException Si ocurre un error en la consulta.
+     * @return void
+     */
+    public function editar(int $id, array $data): void
+    {
+        $db = (new DB)->getConexion();
+        $query = "UPDATE usuarios 
+                  SET usuarios_email = :usuarios_email, 
+                      usuarios_username = :usuarios_username 
+                  WHERE usuarios_id = :usuarios_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            'usuarios_email' => $data['usuarios_email'],
+            'usuarios_username' => $data['usuarios_username'],
+            'usuarios_id' => $id,
+        ]);
+    }
+
+    public function eliminar(int $id): void
+    {
+        $db = (new DB)->getConexion();
+        $query = "DELETE FROM usuarios WHERE usuarios_id = :usuarios_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            'usuarios_id' => $id,
+        ]);
+    }
+
 
     public function getUsuariosId(): int
     {

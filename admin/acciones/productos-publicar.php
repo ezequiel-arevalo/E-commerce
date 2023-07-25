@@ -10,7 +10,7 @@ session_start();
 require_once __DIR__ . '/../../bootstrap/autoload.php';
 
 // Verificar si el usuario está autenticado
-if (!(new Autenticacion())->estaAutenticado()) {
+if (!(new Autenticacion())->estaAutenticadoComoAdmin()) {
     $_SESSION['mensajeError'] =  "¡Se requiere haber iniciado sesión para ver este contenido!";
     header("Location: ../index.php?s=_iniciar-sesion");
     exit;

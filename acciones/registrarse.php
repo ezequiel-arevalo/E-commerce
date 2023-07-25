@@ -2,11 +2,13 @@
 session_start();
 require_once __DIR__ . '/../bootstrap/autoload.php';
 
+$username  = $_POST['username'];
 $email     = $_POST['email'];
 $password  = $_POST['password'];
 
 try {
     (new App\Models\Usuario())->crear([
+        'usuarios_username' => $username,
         'usuarios_email' => $email,
         'usuarios_password' => password_hash($password, PASSWORD_DEFAULT),
         'roles_fk' => 2,

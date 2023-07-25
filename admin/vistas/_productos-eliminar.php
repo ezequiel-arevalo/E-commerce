@@ -1,8 +1,7 @@
 <?php 
-use App\Models\Producto;
     
 // Obtenemos la función donde se encuentran los productos y sus características
-$productos = (new Producto())->productoID($_GET['id']);
+$productos = (new App\Models\Producto())->productoID($_GET['id']);
 ?>
 <div class="Vista-Title">
     <h2>Se requiere confirmación para eliminar</h2>

@@ -19,75 +19,40 @@ html {
   scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
+.nav-item{
+  list-style: none;
 }
 
 /*HEADER Y FOOTER*/
 header,
 footer {
   width: 100%;
-  height: 100px;
   background-color: var(--background);
 }
 
-/*LOGO DEL SITIO*/
-#Header-Logo {
-  text-align: center;
-  line-height: 100px;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 1.5rem;
-  color: var(--color-text);
+#Header-Logo{
+  padding-top: 10px;
 }
 
-/*MENÚ DE NAVEGACIÓN*/
+#Header-Logo > a{
+  font-family: "Josefin Sans", sans-serif !important;
+  color: var(--color-text) !important;
+  text-decoration: none;
+  padding-top: 10px;
+}
 
 nav {
-  min-width: 200px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--color-border);
-  background-color: var(--background);
+  background-color: #131313 !important;
 }
 
-nav ul {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-nav ul li {
-  width: 200px;
-  margin: 0px 20px;
-  list-style-type: none;
-  text-align: center;
-}
-
-.list-item-link {
-  position: relative;
-  display: inline-block;
-  padding: 15px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--color-link);
-  border: none;
-  outline: none;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-
-.list-item-link:hover {
-  color: var(--color-text);
+.navbar{
+  align-items:  center !important;
 }
 
 /*MAIN*/
 main {
   width: 100%;
-  min-height: 79.1vh;
+  min-height: 85vh;
 }
 
 /*VISTA TITLE - SUBTITLE*/
@@ -108,6 +73,7 @@ main {
 
 /*Footer*/
 #Footer {
+  height: 100px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -232,6 +198,7 @@ VISTA DE HOME
 #Section-2-Content-Right {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 #Section-2-Content-Right>img {
@@ -257,6 +224,7 @@ VISTA DE HOME
 #Section-3-Content-Left {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 #Section-3-Content-Left>img {
@@ -363,7 +331,6 @@ VISTA DE HOME
 /*PRODUCTOS CARD*/
 .Producto-card {
   width: 430px;
-  min-height: 700px;
   margin: 20px;
   background: rgb(236, 236, 236);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -436,7 +403,6 @@ VISTA DE HOME
 /*PRODUCTOS FOOTER*/
 .Producto-footer {
   width: 100%;
-  height: 100px;
   padding-bottom: 20px;
 
   /*FLEXBOX*/
@@ -667,15 +633,6 @@ VISTA DE HOME
 
 /*RESPONSIVE*/
 @media screen and (max-width: 768px) {
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-  }
-
   #Section-2-Content {
     flex-direction: column;
     justify-content: center;
@@ -781,6 +738,10 @@ VISTA DE HOME
   #crear-productos-btn {
     min-width: 220px;
   }
+
+  #Error-Content{
+    width: 90%;
+  }
 }
 
 /*Productos*/
@@ -866,7 +827,9 @@ table td a:hover {
 
 /*CSS CREAR PRODUCTOS*/
 #crear-productos,
-#editar-productos {
+#editar-productos,
+#editar-usuarios,
+#eliminar-usuarios{
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -878,12 +841,16 @@ table td a:hover {
 }
 
 #crear-productos-form,
-#editar-productos-form {
+#editar-productos-form,
+#editar-usuarios-form,
+#eliminar-usuarios-form {
   width: 90%;
 }
 
 #crear-productos-form>.form-fila,
-#editar-productos-form>.form-fila {
+#editar-productos-form>.form-fila,
+#editar-usuarios-form>.form-fila,
+#eliminar-usuarios-form>.form-fila{
   display: flex;
   flex-direction: column;
   margin-bottom: 1.5rem;
@@ -902,7 +869,11 @@ table td a:hover {
 #editar-productos-form>.form-fila>input,
 #editar-productos-form>.form-fila>textarea,
 #editar-productos-form>.form-fila>#estados_publicacion_fk,
-#editar-productos-form>.form-fila>#categorias_fk {
+#editar-productos-form>.form-fila>#categorias_fk,
+#editar-usuarios-form>.form-fila>#username,
+#editar-usuarios-form>.form-fila>#email,
+#eliminar-usuarios-form>.form-fila>#username,
+#eliminar-usuarios-form>.form-fila>#email{
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 5px;
@@ -912,7 +883,11 @@ table td a:hover {
 #crear-productos-form>.form-fila>input:focus,
 #crear-productos-form>.form-fila>textarea:focus,
 #editar-productos-form>.form-fila>input:focus,
-#editar-productos-form>.form-fila>textarea:focus {
+#editar-productos-form>.form-fila>textarea:focus,
+#editar-usuarios-form>.form-fila>#username:focus,
+#editar-usuarios-form>.form-fila>#email:focus,
+#eliminar-usuarios-form>.form-fila>#username:focus,
+#eliminar-usuarios-form>.form-fila>#email:focus{
   border-color: #191919;
   outline: none;
 }

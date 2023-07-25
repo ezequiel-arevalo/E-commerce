@@ -41,6 +41,7 @@ class Autenticacion
     public function marcarComoAutenticado(Usuario $usuario): void
     {
         $_SESSION['usuarios_id'] = $usuario->getUsuariosId();
+        $_SESSION['roles_id'] = $usuario->getRolesFk();
     }
 
     /**
@@ -50,7 +51,7 @@ class Autenticacion
      */
     public function cerrarSesion(): void
     {
-        unset($_SESSION['usuarios_id']);
+        unset($_SESSION['usuarios_id'], $_SESSION['roles_id']);
     }
 
     /**
@@ -61,6 +62,11 @@ class Autenticacion
     public function estaAutenticado(): bool
     {
         return isset($_SESSION['usuarios_id']);
+    }
+    
+    public function estaAutenticadoComoAdmin(): bool
+    {
+        return $this->estaAutenticado() && $_SESSION['roles_id'] === 1;
     }
 
     /**
