@@ -85,7 +85,7 @@ nav {
 /*MAIN*/
 main {
   width: 100%;
-  min-height: 76.2vh;
+  min-height: 81.2vh;
 }
 
 /*VISTA TITLE - SUBTITLE*/
@@ -498,11 +498,6 @@ VISTA DE HOME
   padding: 10px;
 }
 
-#Producto-Info-IMG img {
-  width: 150px;
-  height: 410px;
-}
-
 #Producto-Info-TEXT {
   width: 60%;
   height: inherit;
@@ -757,11 +752,6 @@ VISTA DE HOME
     text-align: center;
     box-sizing: border-box;
     padding: 10px;
-  }
-
-  #Producto-Info-IMG img {
-    width: 150px;
-    height: 410px;
   }
 
   #Producto-Info-TEXT {

@@ -30,19 +30,15 @@ $rutas = [
         'requiereAutenticacion' => true,
     ],
     '_gestion-usuarios' => [
-        'title' => 'MyShop: Eliminar productos',
-        'requiereAutenticacion' => true,
-    ],
-    '_gestion-usuarios' => [
-        'title' => 'MyShop: Eliminar productos',
+        'title' => 'MyShop: Gestionar Usuarios',
         'requiereAutenticacion' => true,
     ],
     '_usuarios-editar' => [
-        'title' => 'MyShop: Eliminar productos',
+        'title' => 'MyShop: Editar Usuarios',
         'requiereAutenticacion' => true,
     ],
     '_usuarios-eliminar' => [
-        'title' => 'MyShop: Eliminar productos',
+        'title' => 'MyShop: Eliminar Usuarios',
         'requiereAutenticacion' => true,
     ]
 ];
@@ -153,7 +149,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
             ?>
                 <div class="mensajeExito alert fade show">
                     <?= $_SESSION['mensajeExito']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close px-2" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php
                 // Una vez que usamos el valor, lo eliminamos
@@ -167,7 +163,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
             ?>
                 <div class="mensajeError">
                     <?= $_SESSION['mensajeError']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close px-2" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php
                 // Una vez que usamos el valor, lo eliminamos

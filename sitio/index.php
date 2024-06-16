@@ -124,7 +124,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
                         <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="index.php?s=_perfil">Mi Perfil</a></li>
                         <li><a class="dropdown-item" href="index.php?s=_carrito">Carrito</a></li>
-                        <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li>
+                        <!-- <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li> -->
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -193,7 +193,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
 
     <!--Inicio del Footer-->
     <footer id="Footer">
-        <p>Todos los derechos reservados &copy; 2023 - <a href="https://github.com/Ezearevalodev" target="_blank">@Ezearevalodev</a></p>
+        <p>Todos los derechos reservados &copy; 2023 - <a href="https://github.com/Ezequiel-Arevalo" target="_blank">@Ezequiel-Arevalo</a></p>
     </footer>
     <!--Fin del Footer-->
 
