@@ -1,4 +1,6 @@
 
+vendor
+/vendor
 vendor/guzzlehttp/psr7/
 vendor/intervention/image/
 vendor/psr/http-message/
