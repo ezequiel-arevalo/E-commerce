@@ -26,6 +26,6 @@ try {
     exit;
 } catch (Exception $e) {
     $_SESSION['mensajeError'] = 'Ocurrió un problema inesperado al tratar de eliminar el usuario.';
-    header("Location: ../index.php?s=_usuarios-editar&id=" . $id);
+    header("Location: ../index.php?s=_usuarios-eliminar&id=" . $id);
     exit;
 }

@@ -10,11 +10,11 @@ $mensajeError = "Debes iniciar sesión para añadir productos a tu carrito";
 // Procesar la adición al carrito si es una solicitud POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productoId = $_POST['producto_id'];
-    $cantidad = 1; // Ajustar según tus necesidades
+    $cantidad = 1;
 
     if ($Autenticacion->estaAutenticado()) {
         // Crear una instancia del carrito
-        $carrito = new Carrito($Autenticacion->getUsuarioId()); // Asegúrate de pasar el objeto de base de datos y el ID del usuario
+        $carrito = new Carrito($Autenticacion->getUsuarioId());
         $carrito->agregarProducto($productoId, $cantidad);
         $mensajeExito = "Producto añadido al carrito con éxito!";
     } else {
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if ($Autenticacion->estaAutenticado()): ?>
     <div>
         <?php if (isset($mensajeExito)): ?>
-            <div class="alert alert-success"><?= $mensajeExito; ?></div>
+            <div class="alert alert-success alert-dismissible fade show w-50 m-auto text-center text-wrap" role="alert"><?= $mensajeExito; ?></div>
         <?php endif; ?>
         <form action="" method="POST">
             <input type="hidden" name="producto_id" value="<?= $productos->getProductoId(); ?>">

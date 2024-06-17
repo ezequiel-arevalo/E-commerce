@@ -60,14 +60,20 @@ if (isset($_SESSION['oldData'])) {
         <div class="form-fila">
             <label for="simbolo">Tipo de moneda:</label>
             <select name="precio_simbolo_fk" id="precio_simbolo_fk">
-                <?php foreach ($PrecioSimbolo as $item): ?>
+                <!-- <?php foreach ($PrecioSimbolo as $item): ?>
                     <option 
                         value="<?= $item->getPrecioSimboloId(); ?>"
                         <?= $item->getPrecioSimboloId() == ($oldData['precio_simbolo_fk'] ?? $producto->getPrecioSimboloFk()) ? 'selected' : ''; ?>
                     >
                         <?= $item->getPrecioSimboloNombre(); ?>
                     </option>
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
+                <option 
+                    value="<?= $PrecioSimbolo[0]->getPrecioSimboloId();?>"
+                    <?= $PrecioSimbolo[0]->getPrecioSimboloId() == ($oldData['precio_simbolo_fk'] ?? $producto->getPrecioSimboloFk()) ? 'selected' : ''; ?>
+                >
+                    <?= $PrecioSimbolo[0]->getPrecioSimboloNombre();?>
+                </option>
             </select>
         </div>
 

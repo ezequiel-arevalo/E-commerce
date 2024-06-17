@@ -52,16 +52,16 @@ class Usuario extends Modelo
             'usuarios_password'  => $data['usuarios_password'],
             'roles_fk'           => $data['roles_fk'],
         ]);
+
+        // Obtener el ID del usuario recién creado
+        $usuarioId = $db->lastInsertId();
+
+        // Crear un nuevo carrito para el usuario
+        $query = "INSERT INTO carrito (usuarios_id) VALUES (:usuarioId)";
+        $stmt = $db->prepare($query);
+        $stmt->execute(['usuarioId' => $usuarioId]);
     }
 
-    /**
-     * Edita un usuario en la base de datos.
-     *
-     * @param int $id ID del usuario a editar.
-     * @param array $data Datos del usuario a actualizar.
-     * @throws \PDOException Si ocurre un error en la consulta.
-     * @return void
-     */
     public function editar(int $id, array $data): void
     {
         $db = DB::getConexion();
@@ -80,11 +80,21 @@ class Usuario extends Modelo
     public function eliminar(int $id): void
     {
         $db = DB::getConexion();
+
+        // Elimina los productos del carrito del usuario
+        $query = "DELETE FROM productos_en_carrito WHERE usuarios_id = :usuarios_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute(['usuarios_id' => $id]);
+
+        // Elimina el carrito del usuario
+        $query = "DELETE FROM carrito WHERE usuarios_id = :usuarios_id";
+        $stmt = $db->prepare($query);
+        $stmt->execute(['usuarios_id' => $id]);
+
+        // Elimina el usuario
         $query = "DELETE FROM usuarios WHERE usuarios_id = :usuarios_id";
         $stmt = $db->prepare($query);
-        $stmt->execute([
-            'usuarios_id' => $id,
-        ]);
+        $stmt->execute(['usuarios_id' => $id]);
     }
 
     public function getUsuariosId(): int

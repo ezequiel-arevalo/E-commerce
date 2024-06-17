@@ -24,7 +24,7 @@ $productos = (new Producto)->Productos($busqueda);
   <form action="index.php" method="get">
     <input type="hidden" name="s" value="_productos">
     <div class="input-group">
-      <label for="titulo" class="form-label">Titulo</label>
+      <label for="titulo" class="form-label visually-hidden">Titulo</label>
       <input 
         type="search" 
         name="titulo" 

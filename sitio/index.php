@@ -86,6 +86,8 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
 </head>
 
 <body>
+    <div>
+
     <!--Inicio de Header-->
     <header>
     <nav class="navbar navbar-dark h-10">
@@ -124,7 +126,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
                         <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="index.php?s=_perfil">Mi Perfil</a></li>
                         <li><a class="dropdown-item" href="index.php?s=_carrito">Carrito</a></li>
-                        <!-- <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li> -->
+                        <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -193,11 +195,12 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
 
     <!--Inicio del Footer-->
     <footer id="Footer">
-        <p>Todos los derechos reservados &copy; 2023 - <a href="https://github.com/Ezequiel-Arevalo" target="_blank">@Ezequiel-Arevalo</a></p>
+        <p>Todos los derechos reservados &copy; 2024 - <a href="https://github.com/Ezequiel-Arevalo" target="_blank">@Ezequiel-Arevalo</a></p>
     </footer>
     <!--Fin del Footer-->
 
     <!--Bootstrap JS-->
+    <script src="./res/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

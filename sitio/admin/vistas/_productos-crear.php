@@ -21,6 +21,10 @@ if (isset($_SESSION['oldData'])) {
 $EstadoPublicacion = (new \App\Models\EstadoPublicacion())->todo();
 $PrecioSimbolo     = (new \App\Models\PrecioSimbolo())    ->todo();
 $Categoria         = (new \App\Models\Categoria())        ->todos();
+
+// echo "<pre>";
+// var_dump($PrecioSimbolo);
+// echo "</pre>";
 ?>
 
 <section id="crear-productos">
@@ -69,7 +73,8 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
         
         <div class="form-fila">
             <label for="precio_simbolo_fk">Tipo de moneda:</label>
-            <select name="precio_simbolo_fk" id="precio_simbolo_fk">
+            <!-- Descontinuado de momento -->
+            <!-- <select name="precio_simbolo_fk" id="precio_simbolo_fk">
                 <?php
                 foreach ($PrecioSimbolo as $item):
                 ?>
@@ -82,6 +87,14 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
                     <?php
                 endforeach;
                 ?>
+            </select> -->
+            <select name="precio_simbolo_fk" id="precio_simbolo_fk">
+                <option 
+                    value="<?= $PrecioSimbolo[0]->getPrecioSimboloId();?>"
+                    <?= $PrecioSimbolo[0]->getPrecioSimboloId() == $oldData['precio_simbolo_fk'] ? 'selected' : '';?>
+                >
+                    <?= $PrecioSimbolo[0]->getPrecioSimboloNombre();?>
+                </option>
             </select>
         </div>
         <div class="form-fila">

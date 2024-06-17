@@ -18,7 +18,12 @@ if (isset($_SESSION['oldData'])) {
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" name="password" id="password" class="form-control" required>
+            <div class="input-group">
+                <input type="password" name="password" id="password" class="form-control" required>
+                <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                    <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                </button>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary m-auto d-block w-50" id="btn-login">Ingresar</button>
