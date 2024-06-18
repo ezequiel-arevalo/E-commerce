@@ -5,8 +5,6 @@ $EstadoPublicacion = (new \App\Models\EstadoPublicacion())->todo();
 $PrecioSimbolo     = (new \App\Models\PrecioSimbolo())    ->todo();
 $Categoria         = (new \App\Models\Categoria())        ->todos();
 
-// Obtener el producto utilizando el método "productoID" de la clase Producto y pasando el ID obtenido de $_GET['id']
-
 // Verificar si existen errores almacenados en la sesión y asignarlos a la variable $errores
 if (isset($_SESSION['errores'])) {
     $errores = $_SESSION['errores'];

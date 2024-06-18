@@ -1,6 +1,7 @@
 <?php 
 use App\Models\Producto;
 use App\Models\Carrito;
+use App\Auth\Autenticacion;
 
 // Obtenemos la función donde se encuentran los productos y sus características
 $productos = (new Producto)->productoID($_GET['id']);
@@ -12,10 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productoId = $_POST['producto_id'];
     $cantidad = 1;
 
-    if ($Autenticacion->estaAutenticado()) {
+    $autenticacion = new Autenticacion();
+    if ($autenticacion->estaAutenticado()) {
+        $usuarioId = $autenticacion->getUsuarioId();
         // Crear una instancia del carrito
-        $carrito = new Carrito($Autenticacion->getUsuarioId());
-        $carrito->agregarProducto($productoId, $cantidad);
+        $carrito = new Carrito();
+        $carrito->agregarProducto($usuarioId, $productoId, $cantidad);
         $mensajeExito = "Producto añadido al carrito con éxito!";
     } else {
         $mensajeError = "Debes iniciar sesión para añadir productos a tu carrito";
@@ -37,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-<?php if ($Autenticacion->estaAutenticado()): ?>
+<?php if ((new Autenticacion())->estaAutenticado()): ?>
     <div>
         <?php if (isset($mensajeExito)): ?>
             <div class="alert alert-success alert-dismissible fade show w-50 m-auto text-center text-wrap" role="alert"><?= $mensajeExito; ?></div>

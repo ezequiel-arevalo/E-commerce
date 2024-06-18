@@ -2,7 +2,6 @@
 
 namespace App\Models;
 use App\Database\DB;
-
 use PDO;
 
 class Modelo{
@@ -10,6 +9,11 @@ class Modelo{
     protected string $tabla = "";
     protected string $clavePrimaria = "";
 
+    /**
+     * Obtiene todos los registros de la tabla.
+     *
+     * @return array Arreglo de objetos del tipo de modelo.
+     */
     public function todo(): array
     {
         $db = DB::getConexion();

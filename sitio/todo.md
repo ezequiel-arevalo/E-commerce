@@ -21,6 +21,8 @@ Los usuarios a la hora de adquirir mas de un producto con distinto tipo de moned
 > Archivo de cerrar sesión duplicado
 
 > Al fallar el eliminar usuario lo redirige al admin a editar usuario
+
+> Evitar que cuando el usuario no tiene productos en el carrito le de al boton de pagar o vaciar carrito
 </pre>
 
 En este [repositorio](https://github.com/ezequiel-arevalo/e-commerce) se encuentrá este proyecto el cual incluye el sitio mismo, base de datos, y tabla DER

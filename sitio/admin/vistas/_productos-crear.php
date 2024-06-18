@@ -21,10 +21,6 @@ if (isset($_SESSION['oldData'])) {
 $EstadoPublicacion = (new \App\Models\EstadoPublicacion())->todo();
 $PrecioSimbolo     = (new \App\Models\PrecioSimbolo())    ->todo();
 $Categoria         = (new \App\Models\Categoria())        ->todos();
-
-// echo "<pre>";
-// var_dump($PrecioSimbolo);
-// echo "</pre>";
 ?>
 
 <section id="crear-productos">

@@ -11,7 +11,6 @@ class Categoria
     private int $categoriaId;
     private string $categoriaNombre;
 
-    // Método para cargar los datos de un array en la instancia de la clase
     public function cargarDatosDeArray(array $data): void
     {
         $this->setCategoriaId($data['categoria_id']);
