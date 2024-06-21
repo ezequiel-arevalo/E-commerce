@@ -2,6 +2,7 @@
 
 // Obtener la lista de productos utilizando el método "Productos" de la clase Producto
 $productos = (new App\Models\Producto())->Productos();
+
 ?>
 
 <!-- Vista de administración de productos -->

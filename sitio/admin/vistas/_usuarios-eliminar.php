@@ -17,11 +17,6 @@ if (isset($_SESSION['oldData'])) {
 } else {
     $oldData = [];
 }
-
-
-echo "<pre>";
-var_dump($usuario);
-echo "</pre>";
 ?>
 
 <section id="eliminar-usuarios">

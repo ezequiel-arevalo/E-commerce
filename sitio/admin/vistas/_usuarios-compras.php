@@ -1,19 +1,18 @@
 <?php
-
-use App\Auth\Autenticacion;
 use App\Models\Compras;
 use App\Models\PrecioSimbolo;
+use App\Models\Usuario;
 
-$auth = new Autenticacion();
-$usuarioId = $auth->getUsuarioId();
+$usuarioId = $_GET['id'];
+$usuario = (new Usuario())->porId($usuarioId);
 $comprasModel = new Compras();
-$compras = $comprasModel->getComprasByUsuarioId($usuarioId);
 $precioSimboloModel = new PrecioSimbolo();
+$compras = $comprasModel->getComprasByUsuarioId($usuarioId);
 
 ?>
 
 <div class="container mt-5 mb-4">
-    <h2 class="text-center mb-4">Mis Compras</h2>
+    <h2 class="text-center mb-4">Compras de: <?= $usuario->getUsuariosUsername(); ?></h2>
     <div class="table-container">
         <?php if (empty($compras)) { ?>
             <p>No has realizado ninguna compra.</p>
@@ -35,7 +34,7 @@ $precioSimboloModel = new PrecioSimbolo();
                         $simboloNombre = $precioSimboloModel->getNombrePorId($compra['precio_simbolo_fk']);
                         ?>
                         <tr>
-                            <td class="fix-col"><img src="<?= './res/img/productos/' . $compra['productos_img']; ?>" alt="<?= $compra['productos_img_alt']; ?>" class="m-auto d-block"></td>
+                            <td class="fix-col"><img src="<?= '../res/img/productos/' . $compra['productos_img']; ?>" alt="<?= $compra['productos_img_alt']; ?>" class="m-auto d-block"></td>
                             <td><?= $compra['productos_title']; ?></td>
                             <td><?= $compra['cantidad']; ?></td>
                             <td><?= $simboloNombre . ' ' . $compra['productos_price']; ?></td>

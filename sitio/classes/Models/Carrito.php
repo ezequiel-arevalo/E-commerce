@@ -5,7 +5,8 @@ namespace App\Models;
 use App\Database\DB;
 use PDO;
 
-class Carrito extends Modelo {
+class Carrito extends Modelo 
+{
     protected string $tabla = 'carrito';
     protected string $clavePrimaria = 'carrito_id';
 

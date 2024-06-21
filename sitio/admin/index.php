@@ -40,6 +40,10 @@ $rutas = [
     '_usuarios-eliminar' => [
         'title' => 'MyShop: Eliminar Usuarios',
         'requiereAutenticacion' => true,
+    ],
+    '_usuarios-compras' => [
+        'title' => 'MyShop: Compras de usuarios',
+        'requireAutenticacion' => true,
     ]
 ];
 

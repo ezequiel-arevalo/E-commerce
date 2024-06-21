@@ -39,8 +39,9 @@ $roles    = (new \App\Models\Roles())->todo();
                     <td><?= $usuario->getUsuariosUsername() ? $usuario->getUsuariosUsername() : 'No especificado'; ?></td>
                     <td><?= $usuario->getUsuariosEmail(); ?></td>
                     <td>
-                        <!-- Enlaces para editar y eliminar el usuario -->
+                        <!-- Enlaces para editar, ver compras y eliminar el usuario -->
                         <a href="index.php?s=_usuarios-editar&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-primary mt-1"><i class="bi bi-pencil"> </i>Editar</a>
+                        <a href="index.php?s=_usuarios-compras&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-success mt-1"><i class="bi bi-cart"> </i>Compras</a>
                         <?php if ($usuario->getRolesFk() === 2): ?>
                             <!-- Botón de eliminar -->
                         <a href="index.php?s=_usuarios-eliminar&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-danger mt-1"><i class="bi bi-trash3"> </i>Eliminar</a>

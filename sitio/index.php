@@ -31,15 +31,15 @@ $rutas = [
         'title' => 'MyShop: Registro de usuarios'
     ],
     '_perfil' => [
-        'title' => 'MyShop: My Account',
+        'title' => 'MyShop: Mi Cuenta',
         'requiereAutenticacion' => true,
     ],
     '_carrito' => [
-        'title' => 'MyShop: My carrito',
+        'title' => 'MyShop: Mi carrito',
         'requiereAutenticacion' => true,
     ],
     '_mis-compras' => [
-        'title' => 'MyShop: My carrito',
+        'title' => 'MyShop: Mis Compras',
         'requiereAutenticacion' => true,
     ]
 ];

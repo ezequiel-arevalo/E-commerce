@@ -30,6 +30,4 @@ class Roles extends Modelo
     {
         $this->rol_nombre = $rol_nombre;
     }
-
-    // Agrega aquí los métodos adicionales que puedas necesitar para el modelo de roles
 }
