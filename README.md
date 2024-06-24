@@ -7,7 +7,7 @@ Proyecto final de la materia de programación 2.
 El proyecto consta de tres carpetas principales:
 
 - **DB**: Contiene el archivo de la base de datos.
-- **DER**: Contiene el Diagrama Entidad-Relación (DER) creado con MySQL Workbench 6.3.10.
+- **DER**: Contiene el Diagrama Entidad-Relación (DER) creado con [MySQL Workbench](https://downloads.mysql.com/archives/workbench/) 6.3.10.
 - **sitio**: Contiene todo el sitio web.
 
 ## Contenidos
