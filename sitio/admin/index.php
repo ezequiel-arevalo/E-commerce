@@ -85,6 +85,25 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
     <meta name="author" content="Ezequiel Thomas Arevalo">
     <meta name="keywords" content="MyShop, tienda en línea, productos, calidad, precios asequibles">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="../res/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../res/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../res/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../res/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../res/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../res/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../res/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../res/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../res/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../res/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../res/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../res/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../res/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../res/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../res/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <!--CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -106,12 +125,12 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</h5>
+                    <span class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</span>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <?php 
-                        if($Autenticacion->estaAutenticadoComoAdmin()):
+                        if($Autenticacion->estaAutenticadoComoAdmin()){
                     ?>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
@@ -123,18 +142,19 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?s=_gestion-usuarios">Usuarios</a>
                     </li>
+                    <li>
                         <form action="../acciones/cerrar-sesion.php" method="post">
                             <button type="submit" class="btn bg-danger text-white"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
                         </form>
                     </li>
                     <?php 
-                        else:
+                        } else {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?s=_iniciar-sesion">Iniciar Sesión</a>
+                            <a class="nav-link" href="../index.php?s=_iniciar-sesion">Iniciar Sesión</a>
                         </li>
                     <?php 
-                        endif;
+                        };
                     ?>
                     </ul>
                 </div>
@@ -149,7 +169,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
         <div>
             <!-- Imprimir el mensaje de éxito, si existe -->
             <?php
-            if (isset($_SESSION['mensajeExito'])):
+            if (isset($_SESSION['mensajeExito'])){
             ?>
                 <div class="mensajeExito alert fade show">
                     <?= $_SESSION['mensajeExito']; ?>
@@ -158,12 +178,12 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
             <?php
                 // Una vez que usamos el valor, lo eliminamos
                 unset($_SESSION['mensajeExito']);
-            endif;
+            }
             ?>
 
             <!-- Imprimir el mensaje de error, si existe -->
             <?php
-            if (isset($_SESSION['mensajeError'])):
+            if (isset($_SESSION['mensajeError'])){
             ?>
                 <div class="mensajeError">
                     <?= $_SESSION['mensajeError']; ?>
@@ -172,7 +192,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticadoComoAdmin()) {
             <?php
                 // Una vez que usamos el valor, lo eliminamos
                 unset($_SESSION['mensajeError']);
-            endif;
+            }
             ?>
         </div>
 

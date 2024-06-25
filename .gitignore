@@ -1,3 +1,5 @@
-
+# Ignorar la carpeta vendor completa
 sitio/vendor/
-/sitio/vendor/composer
+
+# Ignorar archivos y carpetas generados por Composer
+sitio/composer.lock

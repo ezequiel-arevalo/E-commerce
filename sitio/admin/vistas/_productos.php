@@ -7,7 +7,7 @@ $productos = (new App\Models\Producto())->Productos();
 
 <!-- Vista de administración de productos -->
 <div class="Vista-Title">
-    <h1>Administración de Productos</h1>
+    <h2>Administración de Productos</h2>
     
     <!-- Botón para crear un nuevo producto -->
     <div id="container-admin-productos">

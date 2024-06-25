@@ -7,7 +7,7 @@ $roles    = (new \App\Models\Roles())->todo();
 
 <!-- Vista de administración de usuarios -->
 <div class="Vista-Title">
-    <h1>Administración de Usuarios</h1>
+    <h2>Administración de Usuarios</h2>
     
     <!-- Tabla que muestra los usuarios -->
     <div class="table-container">
@@ -24,7 +24,7 @@ $roles    = (new \App\Models\Roles())->todo();
             <tbody>
                 <?php 
                     // Iterar sobre la lista de usuarios y mostrar cada usuario en una fila de la tabla
-                    foreach($usuarios as $usuario):
+                    foreach($usuarios as $usuario){
                         // Buscar el nombre del rol asociado al usuario
                         foreach ($roles as $rol) {
                             if ($rol->getRolId() === $usuario->getRolesFk()) {
@@ -42,13 +42,13 @@ $roles    = (new \App\Models\Roles())->todo();
                         <!-- Enlaces para editar, ver compras y eliminar el usuario -->
                         <a href="index.php?s=_usuarios-editar&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-primary mt-1"><i class="bi bi-pencil"> </i>Editar</a>
                         <a href="index.php?s=_usuarios-compras&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-success mt-1"><i class="bi bi-cart"> </i>Compras</a>
-                        <?php if ($usuario->getRolesFk() === 2): ?>
+                        <?php if ($usuario->getRolesFk() === 2){ ?>
                             <!-- Botón de eliminar -->
                         <a href="index.php?s=_usuarios-eliminar&id=<?= $usuario->getUsuariosId(); ?>" class="btn btn-danger mt-1"><i class="bi bi-trash3"> </i>Eliminar</a>
-                        <?php endif; ?>
+                        <?php } ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+                <?php }; ?>
             </tbody>
         </table>
     </div>

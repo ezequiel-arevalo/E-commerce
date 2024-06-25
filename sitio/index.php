@@ -79,6 +79,25 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
     <meta name="author" content="Ezequiel Thomas Arevalo">
     <meta name="keywords" content="MyShop, tienda en línea, productos, calidad, precios asequibles">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./res/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./res/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./res/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./res/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./res/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./res/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./res/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./res/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./res/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./res/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./res/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./res/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./res/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./res/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./res/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <!--CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -86,71 +105,69 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
 </head>
 
 <body>
-    <div>
-
     <!--Inicio de Header-->
     <header>
-    <nav class="navbar navbar-dark h-10">
-        <div class="container-fluid">
-            <div id="Header-Logo">
-                <a href="index.php">
-                    <h1>MyShop</h1>
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <nav class="navbar navbar-dark h-10">
+            <div class="container-fluid">
+                <div id="Header-Logo">
+                    <a href="index.php">
+                        <h1>MyShop</h1>
+                    </a>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?s=_home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?s=_productos">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?s=_contacto">Contacto</a>
-                    </li>
-                    <?php 
-                        if($Autenticacion->estaAutenticado()):
-                    ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mi cuenta
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="index.php?s=_perfil">Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="index.php?s=_carrito">Carrito</a></li>
-                        <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-item">
-                            <form action="acciones/cerrar-sesion.php" method="post">
-                            <button type="submit" class="btn bg-danger text-white"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
-                            </form>
-                        </li>
-                        </ul>
-                    </li>
-                    <?php 
-                        else:
-                    ?>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MyShop</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?s=_iniciar-sesion">Iniciar Sesión</a>
-                            <a class="nav-link" href="index.php?s=_registrarse">Registrarse</a>
+                            <a class="nav-link active" aria-current="page" href="index.php?s=_home">Home</a>
                         </li>
-                    <?php 
-                        endif;
-                    ?>
-                    </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?s=_productos">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?s=_contacto">Contacto</a>
+                        </li>
+                        <?php 
+                            if($Autenticacion->estaAutenticado()){
+                        ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mi cuenta
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="index.php?s=_perfil">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" href="index.php?s=_carrito">Carrito</a></li>
+                            <li><a class="dropdown-item" href="index.php?s=_mis-compras">Mis compras</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-item">
+                                <form action="acciones/cerrar-sesion.php" method="post">
+                                <button type="submit" class="btn bg-danger text-white"><?= $Autenticacion->getUsuario()->getUsuariosEmail(); ?> (Cerrar Sesión)</button>
+                                </form>
+                            </li>
+                            </ul>
+                        </li>
+                        <?php 
+                            } else {
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?s=_iniciar-sesion">Iniciar Sesión</a>
+                                <a class="nav-link" href="index.php?s=_registrarse">Registrarse</a>
+                            </li>
+                        <?php 
+                            }
+                        ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         </nav>
     </header>
     <!--Fin de Header-->
@@ -160,7 +177,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
         <div>
             <!-- Imprimir el mensaje de éxito, si existe -->
             <?php
-            if (isset($_SESSION['mensajeExito'])):
+            if (isset($_SESSION['mensajeExito'])){
             ?>
                 <div class="mensajeExito alert fade show">
                     <?= $_SESSION['mensajeExito']; ?>
@@ -169,12 +186,12 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
             <?php
                 // Una vez que usamos el valor, lo eliminamos
                 unset($_SESSION['mensajeExito']);
-            endif;
+            }
             ?>
 
             <!-- Imprimir el mensaje de error, si existe -->
             <?php
-            if (isset($_SESSION['mensajeError'])):
+            if (isset($_SESSION['mensajeError'])){
             ?>
                 <div class="mensajeError alert fade show">
                     <?= $_SESSION['mensajeError']; ?>
@@ -183,7 +200,7 @@ if ($requiereAutenticacion && !$Autenticacion->estaAutenticado()) {
             <?php
                 // Una vez que usamos el valor, lo eliminamos
                 unset($_SESSION['mensajeError']);
-            endif;
+            };
             ?>
         </div>
         <?php

@@ -28,17 +28,17 @@ if (isset($_SESSION['oldData'])) {
         <div class="form-fila">
             <label for="username">Nombre de usuario</label>
             <input type="text" name="username" id="username" value="<?= $oldData['username'] ?? $usuario->getUsuariosUsername(); ?>">
-            <?php if (isset($errores['username'])): ?>
+            <?php if (isset($errores['username'])){ ?>
                 <span class="error"><?= $errores['username']; ?></span>
-            <?php endif; ?>
+            <?php }; ?>
         </div>
 
         <div class="form-fila">
             <label for="email">Correo electrónico</label>
             <input type="email" name="email" id="email" value="<?= $oldData['email'] ?? $usuario->getUsuariosEmail(); ?>">
-            <?php if (isset($errores['email'])): ?>
+            <?php if (isset($errores['email'])){ ?>
                 <span class="error"><?= $errores['email']; ?></span>
-            <?php endif; ?>
+            <?php }; ?>
         </div>
 
         <button type="submit" class="btn btn-success w-100"><i class="bi bi-check2"></i> Actualizar</button>

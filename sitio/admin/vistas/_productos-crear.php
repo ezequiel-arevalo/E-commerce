@@ -36,34 +36,34 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
             id="titulo"
             name="titulo"
             value="<?= $oldData['titulo'] ?? null ;?>"
-            aria-describedby="help-titulo <?php if (isset($errores['titulo'])): ?> error-titulo <?php endif; ?>"
+            aria-describedby="help-titulo <?php if (isset($errores['titulo'])){ ?> error-titulo <?php } ?>"
             >
             <div class="form-help" id="help-titulo">El título debe tener al menos 2 caracteres.</div>
             <?php
-            if (isset($errores['titulo'])):
+            if (isset($errores['titulo'])){
             ?>
                 <div class="msg-error" id="error-titulo"><?= $errores['titulo'];?></div>
             <?php
-            endif;
+            }
             ?>
         </div>
 
         <div class="form-fila">
             <label for="sinopsis">Sinopsis</label>
-            <textarea name="sinopsis" id="sinopsis" <?php if (isset($errores['sinopsis'])): ?>aria-describedby="error-sinopsis"<?php endif; ?>><?= $oldData['sinopsis'] ?? null ;?></textarea>
+            <textarea name="sinopsis" id="sinopsis" <?php if (isset($errores['sinopsis'])){ ?>aria-describedby="error-sinopsis"<?php } ?>><?= $oldData['sinopsis'] ?? null ;?></textarea>
 
-            <?php if (isset($errores['sinopsis'])): ?>
+            <?php if (isset($errores['sinopsis'])){ ?>
                 <div class="msg-error" id="error-sinopsis"><?= $errores['sinopsis']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
             <label for="descripcion">Descripción</label>
             <textarea name="descripcion" id="descripcion" <?php if (isset($errores['descripcion'])): ?>aria-describedby="error-descripcion"<?php endif; ?>><?= $oldData['descripcion'] ?? null ;?></textarea>
 
-            <?php if (isset($errores['descripcion'])): ?>
+            <?php if (isset($errores['descripcion'])){ ?>
                 <div class="msg-error" id="error-descripcion"><?= $errores['descripcion']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         
@@ -72,7 +72,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
             <!-- Descontinuado de momento -->
             <!-- <select name="precio_simbolo_fk" id="precio_simbolo_fk">
                 <?php
-                foreach ($PrecioSimbolo as $item):
+                foreach ($PrecioSimbolo as $item){
                 ?>
                     <option 
                         value="<?= $item->getPrecioSimboloId();?>"
@@ -81,7 +81,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
                         <?= $item->getPrecioSimboloNombre();?>
                     </option>
                     <?php
-                endforeach;
+                };
                 ?>
             </select> -->
             <select name="precio_simbolo_fk" id="precio_simbolo_fk">
@@ -95,11 +95,11 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
         </div>
         <div class="form-fila">
             <label for="price">Precio</label>
-            <input type="number" name="price" id="price" step="0.01" value="<?= $oldData['price'] ?? null ;?>" <?php if (isset($errores['price'])): ?>aria-describedby="error-price"<?php endif; ?>>
+            <input type="number" name="price" id="price" step="0.01" value="<?= $oldData['price'] ?? null ;?>" <?php if (isset($errores['price'])){ ?>aria-describedby="error-price"<?php } ?>>
                 
-                <?php if (isset($errores['price'])): ?>
+                <?php if (isset($errores['price'])){ ?>
                     <div class="msg-error" id="error-price"><?= $errores['price']; ?></div>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
 
                 <div class="form-fila">
@@ -117,7 +117,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
             <label for="estados_publicacion_fk">Estado de publicación</label>
             <select name="estados_publicacion_fk" id="estados_publicacion_fk">
                 <?php
-                foreach ($EstadoPublicacion as $estado):
+                foreach ($EstadoPublicacion as $estado){
                 ?>
                     <option 
                     value="<?= $estado->getEstadoPublicacionId();?>"
@@ -126,7 +126,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
                     <?= $estado->getNombre();?>
                 </option>
                 <?php
-                endforeach;
+                }
                 ?>
             </select>
         </div>
@@ -135,7 +135,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
             <label for="categorias_fk">Categoría</label>
             <select name="categorias_fk" id="categorias_fk">
                 <?php
-                foreach ($Categoria as $item):
+                foreach ($Categoria as $item){
                 ?>
                     <option 
                         value="<?= $item->getCategoriaId();?>"
@@ -144,7 +144,7 @@ $Categoria         = (new \App\Models\Categoria())        ->todos();
                         <?= $item->getCategoriaNombre();?>
                     </option>
                 <?php
-                endforeach;
+                };
                 ?>
             </select>
         </div>

@@ -30,42 +30,34 @@ if (isset($_SESSION['oldData'])) {
     <form action="acciones/productos-editar.php?id=<?= $producto->getProductoId(); ?>" method="post" id="editar-productos-form" enctype="multipart/form-data">
         <div class="form-fila">
             <label for="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" value="<?= $oldData['titulo'] ?? $producto->getProductoTitle(); ?>" aria-describedby="help-titulo <?php if (isset($errores['titulo'])): ?> error-titulo <?php endif; ?>">
+            <input type="text" id="titulo" name="titulo" value="<?= $oldData['titulo'] ?? $producto->getProductoTitle(); ?>" aria-describedby="help-titulo <?php if (isset($errores['titulo'])){ ?> error-titulo <?php } ?>">
             <div class="form-help" id="help-titulo">El título debe tener al menos 2 caracteres.</div>
-            <?php if (isset($errores['titulo'])): ?>
+            <?php if (isset($errores['titulo'])){ ?>
                 <div class="msg-error" id="error-titulo"><?= $errores['titulo']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
             <label for="sinopsis">Sinopsis</label>
-            <textarea name="sinopsis" id="sinopsis" <?php if (isset($errores['sinopsis'])): ?>aria-describedby="error-sinopsis"<?php endif; ?>><?= $oldData['sinopsis'] ?? $producto->getProductoSinopsis(); ?></textarea>
+            <textarea name="sinopsis" id="sinopsis" <?php if (isset($errores['sinopsis'])){ ?>aria-describedby="error-sinopsis"<?php } ?>><?= $oldData['sinopsis'] ?? $producto->getProductoSinopsis(); ?></textarea>
 
-            <?php if (isset($errores['sinopsis'])): ?>
+            <?php if (isset($errores['sinopsis'])){ ?>
                 <div class="msg-error" id="error-sinopsis"><?= $errores['sinopsis']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
             <label for="descripcion">Descripción</label>
-            <textarea name="descripcion" id="descripcion" <?php if (isset($errores['descripcion'])): ?>aria-describedby="error-descripcion"<?php endif; ?>><?= $oldData['descripcion'] ?? $producto->getProductoDescription(); ?></textarea>
+            <textarea name="descripcion" id="descripcion" <?php if (isset($errores['descripcion'])){ ?>aria-describedby="error-descripcion"<?php } ?>><?= $oldData['descripcion'] ?? $producto->getProductoDescription(); ?></textarea>
 
-            <?php if (isset($errores['descripcion'])): ?>
+            <?php if (isset($errores['descripcion'])){ ?>
                 <div class="msg-error" id="error-descripcion"><?= $errores['descripcion']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
-            <label for="simbolo">Tipo de moneda:</label>
+            <label for="precio_simbolo_fk">Tipo de moneda:</label>
             <select name="precio_simbolo_fk" id="precio_simbolo_fk">
-                <!-- <?php foreach ($PrecioSimbolo as $item): ?>
-                    <option 
-                        value="<?= $item->getPrecioSimboloId(); ?>"
-                        <?= $item->getPrecioSimboloId() == ($oldData['precio_simbolo_fk'] ?? $producto->getPrecioSimboloFk()) ? 'selected' : ''; ?>
-                    >
-                        <?= $item->getPrecioSimboloNombre(); ?>
-                    </option>
-                <?php endforeach; ?> -->
                 <option 
                     value="<?= $PrecioSimbolo[0]->getPrecioSimboloId();?>"
                     <?= $PrecioSimbolo[0]->getPrecioSimboloId() == ($oldData['precio_simbolo_fk'] ?? $producto->getPrecioSimboloFk()) ? 'selected' : ''; ?>
@@ -77,22 +69,22 @@ if (isset($_SESSION['oldData'])) {
 
         <div class="form-fila">
             <label for="price">Precio</label>
-            <input type="number" name="price" id="price" step="0.01" value="<?= $oldData['price'] ?? $producto->getProductoPrice(); ?>" <?php if (isset($errores['price'])): ?>aria-describedby="error-price"<?php endif; ?>>
+            <input type="number" name="price" id="price" step="0.01" value="<?= $oldData['price'] ?? $producto->getProductoPrice(); ?>" <?php if (isset($errores['price'])){ ?>aria-describedby="error-price"<?php } ?>>
 
-            <?php if (isset($errores['price'])): ?>
+            <?php if (isset($errores['price'])){ ?>
                 <div class="msg-error" id="error-price"><?= $errores['price']; ?></div>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
             <p>Imagen actual</p>
-            <?php if ($producto->getProductoImagen()): ?>
+            <?php if ($producto->getProductoImagen()){ ?>
                 <picture>
                     <img src="<?= './../res/img/productos/' . $producto->getProductoImagen(); ?>" alt="<?= $producto->getProductoImagenAlt(); ?>" loading="lazy">
                 </picture>
-            <?php else: ?>
+            <?php } else {?>
                 <p>No tiene imagen.</p>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
         <div class="form-fila">
@@ -108,28 +100,28 @@ if (isset($_SESSION['oldData'])) {
         <div class="form-fila">
             <label for="estados_publicacion_fk">Estado de publicación</label>
             <select name="estados_publicacion_fk" id="estados_publicacion_fk">
-                <?php foreach ($EstadoPublicacion as $estado): ?>
+                <?php foreach ($EstadoPublicacion as $estado){ ?>
                     <option 
                         value="<?= $estado->getEstadoPublicacionId(); ?>"
                         <?= $estado->getEstadoPublicacionId() == ($oldData['estados_publicacion_fk'] ?? $producto->getEstadosPublicacionFk()) ? 'selected' : ''; ?>
                     >
                         <?= $estado->getNombre(); ?>
                     </option>
-                <?php endforeach; ?>
+                <?php } ?>
             </select>
         </div>
 
         <div class="form-fila">
             <label for="categorias_fk">Categoría</label>
             <select name="categorias_fk" id="categorias_fk">
-                <?php foreach ($Categoria as $item): ?>
+                <?php foreach ($Categoria as $item){ ?>
                     <option 
                         value="<?= $item->getCategoriaId(); ?>"
                         <?= $item->getCategoriaId() == ($oldData['categorias_fk'] ?? $producto->getCategoriasFk()) ? 'selected' : ''; ?>
                     >
                         <?= $item->getCategoriaNombre(); ?>
                     </option>
-                <?php endforeach; ?>
+                <?php } ?>
             </select>
         </div>
 

@@ -8,7 +8,9 @@ if (isset($_SESSION['oldData'])) {
     $oldData = [];
 }
 ?>
-
+<div class="Vista-Title">
+    <h2>Iniciar Sesión</h2>
+</div>
 <div id="Iniciar-Sesion-Container" class="d-block w-50 m-auto mt-5">
     <form action="acciones/iniciar-sesion.php" method="post" id="Form-container" class="m-auto">
         <div class="mb-3">

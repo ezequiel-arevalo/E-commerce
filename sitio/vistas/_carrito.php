@@ -30,7 +30,10 @@ $total = $carrito->obtenerTotal($usuarioId);
             </thead>
             <tbody>
                 <?php 
-                    foreach($productosEnCarrito as $producto):
+                    foreach($productosEnCarrito as $producto){
+                    // La idea de implementar estp aqui y en el codigo es que al validar el HTML el input y ID count se veia duplicado, al añadir el ID del producto ya no
+                    // Error: Duplicate ID count.
+                    $productoID = $producto['productos_id'];
                 ?>
                 <tr>
                     <td class="fix-col"><img src="<?= './res/img/productos/' . $producto['productos_img']; ?>" alt="<?= $producto['productos_img_alt']; ?>" class="m-auto d-block"></td>
@@ -44,7 +47,7 @@ $total = $carrito->obtenerTotal($usuarioId);
                                     <button class="btn btn-danger btn-sm btn-square" type="submit" name="restar_cantidad">-</button>
                                 </form>
                             </div>
-                            <input type="number" name="count" id="count" class="input-square text-center" value="<?= $producto['cantidad']; ?>" readonly>
+                            <input type="number" name="count<?=$productoID?>" id="count<?=$productoID?>" class="input-square text-center" value="<?= $producto['cantidad']; ?>" readonly>
                             <div class="input-group-append">
                                 <form action="acciones/realizar-compra.php" method="POST">
                                     <input type="hidden" name="producto_id" value="<?= $producto['productos_id']; ?>">
@@ -63,13 +66,13 @@ $total = $carrito->obtenerTotal($usuarioId);
                         </form>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+                <?php }; ?>
             </tbody>
         </table>
     </div>
     <div class="row justify-content-center m-auto mb-5 mt-3">
         <div class="col-auto w-50">
-            <h4 class="text-center"><strong>Total: </strong><?= number_format($total, 2); ?> $</h4>
+            <h3 class="text-center"><strong>Total: </strong><?= number_format($total, 2); ?> $</h3>
             <div class="d-flex justify-content-between mb-3">
                 <form action="acciones/realizar-compra.php" method="POST" class="w-50 me-2">
                     <button type="submit" name="vaciar_carrito" class="btn btn-danger w-100">Vaciar Carrito</button>

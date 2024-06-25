@@ -20,7 +20,7 @@ $productos = (new Producto)->Productos($busqueda);
 </div>
 
 <div id="buscador-productos">
-  <h2>Buscador:</h2>
+  <h3>Buscador:</h3>
   <form action="index.php" method="get">
     <input type="hidden" name="s" value="_productos">
     <div class="input-group">
@@ -38,7 +38,6 @@ $productos = (new Producto)->Productos($busqueda);
 
 <ul id="Productos">
     <?php
-    // Iterar sobre cada producto obtenido
     foreach ($productos as $item) {
     ?>
     <li>
